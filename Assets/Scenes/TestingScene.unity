@@ -575,7 +575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434034415}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,13 +590,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434034414}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.078, y: 1.989, z: 2.575}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.078, y: -0.66100013, z: 3.285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1726032837}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1047442077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &445063097
 GameObject:
@@ -832,9 +832,10 @@ GameObject:
   - component: {fileID: 540133754}
   - component: {fileID: 540133753}
   - component: {fileID: 540133752}
-  m_Layer: 3
+  - component: {fileID: 540133756}
+  m_Layer: 0
   m_Name: Apple
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -931,6 +932,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &540133756
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540133751}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &891206032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1338,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1485230166}
+  - {fileID: 434034415}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1268086391
@@ -1908,7 +1937,7 @@ GameObject:
   - component: {fileID: 1726032839}
   - component: {fileID: 1726032838}
   - component: {fileID: 1726032841}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2021,11 +2050,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17a7904451e315458caca4ee37bfaf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  handLayer:
+  moveSpeed: 10
+  distanceFromCamera: 3
+  camera: {fileID: 1485230165}
+  rotationSpeed: 50
+  rotationBarSize: 0.2
+  cameraEmpty: {fileID: 1047442076}
+  grabDistance: 10
+  grabPoint: {fileID: 1726032837}
+  layerToIgnore:
     serializedVersion: 2
     m_Bits: 8
-  moveSpeed: 5
-  camera: {fileID: 1485230165}
 --- !u!1 &1779324789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,4 +2305,3 @@ SceneRoots:
   - {fileID: 891206036}
   - {fileID: 147230847}
   - {fileID: 540133755}
-  - {fileID: 434034415}
