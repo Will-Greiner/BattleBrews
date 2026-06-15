@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GrabbableItem", menuName = "Scriptable Objects/GrabbableItem")]
 public class GrabbableItem : ScriptableObject
 {
-    [SerializeField] public string itemID;
-    [SerializeField] public GameObject prefabtoSpawn;
+    public string itemID;
+    public string itemName;
+    public GameObject prefabtoSpawn;
 }

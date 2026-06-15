@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Outcome {Best, Mid, Worst};
+
 public class ObjectiveManager : MonoBehaviour
 {
     public static ObjectiveManager Instance {get; private set;}
@@ -8,6 +10,12 @@ public class ObjectiveManager : MonoBehaviour
     [SerializeField] List<ObjectiveData> objectivesList = new List<ObjectiveData>();
 
     private int currentObjectiveIndex = 0;
+
+    [SerializeField] BossScenario[] possibleScenarios;
+    [SerializeField] PotionData[] availablePotions;
+
+    private BossScenario currentScenario;
+    private PotionData submittedPotion;
 
     private void Awake()
     {
@@ -21,68 +29,106 @@ public class ObjectiveManager : MonoBehaviour
             return;
         }
 
-        InitializeSequence();
+        // InitializeSequence();
         
-    }
-
-    private void OnEnable()
-    {
-        ObjectiveEvents.OnObjectiveCompleted += HandleObjectiveCompleted;
-    }
-
-    private void OnDisable()
-    {
-        ObjectiveEvents.OnObjectiveCompleted -= HandleObjectiveCompleted;
     }
 
     private void InitializeSequence()
     {
-        if (objectivesList.Count == 0) 
-            return;
-
-        // Start the game without save data
-        foreach (var objective in objectivesList)
+        if (possibleScenarios != null)
         {
-            objective.ResetProgress();
-        }
-
-        // Start at 0;
-        currentObjectiveIndex = 0;
-        objectivesList[currentObjectiveIndex].state = ObjectiveState.Active;
-
-        ObjectiveEvents.TriggerObjectiveUpdated(objectivesList[currentObjectiveIndex]);
-    }
-
-    public void AdvanceProgress(string id, int amount)
-    {
-        ObjectiveData target = objectivesList.Find(objective => objective.objectiveID == id);
-        if (target != null)
-        {
-            target.EvaluateProgress(amount);
+            currentScenario = GetRandomScenario();
         }
     }
 
-    private void HandleObjectiveCompleted(ObjectiveData completedObjective)
+    private Outcome EvaluateOutcome()
     {
-        if (objectivesList[currentObjectiveIndex] == completedObjective)
-            UnlockNextObjective();
-    }
-
-    private void UnlockNextObjective()
-    {
-        currentObjectiveIndex++;
-
-        // Check if there are any more objectives
-        if (currentObjectiveIndex >= objectivesList.Count)
+        for (int i = 0; i <= currentScenario.bestOutcomePotions.Length; i++)
         {
-            //Objectives exhausted
+            if (submittedPotion == currentScenario.bestOutcomePotions[i])
+                return Outcome.Best;
         }
 
-        // Activate next objective
-        ObjectiveData nextObjective = objectivesList[currentObjectiveIndex];
-        nextObjective.state = ObjectiveState.Active;
+        for (int i = 0; i <= currentScenario.worstOutcomePotions.Length; i++)
+        {
+            if (submittedPotion == currentScenario.worstOutcomePotions[i])
+                return Outcome.Worst;
+        }
 
-        // Trigger Update Event
-        ObjectiveEvents.TriggerObjectiveUpdated(nextObjective);
+        return Outcome.Mid;
+    }
+
+    // private void OnEnable()
+    // {
+    //     ObjectiveEvents.OnObjectiveCompleted += HandleObjectiveCompleted;
+    // }
+
+    // private void OnDisable()
+    // {
+    //     ObjectiveEvents.OnObjectiveCompleted -= HandleObjectiveCompleted;
+    // }
+
+    // private void InitializeSequence()
+    // {
+    //     if (objectivesList.Count == 0) 
+    //         return;
+
+    //     // Start the game without save data
+    //     foreach (var objective in objectivesList)
+    //     {
+    //         objective.ResetProgress();
+    //     }
+
+    //     // Start at 0;
+    //     currentObjectiveIndex = 0;
+    //     objectivesList[currentObjectiveIndex].state = ObjectiveState.Active;
+
+    //     ObjectiveEvents.TriggerObjectiveUpdated(objectivesList[currentObjectiveIndex]);
+    // }
+
+    // public void AdvanceProgress(string id, int amount)
+    // {
+    //     ObjectiveData target = objectivesList.Find(objective => objective.objectiveID == id);
+    //     if (target != null)
+    //     {
+    //         target.EvaluateProgress(amount);
+    //     }
+    // }
+
+    // private void HandleObjectiveCompleted(ObjectiveData completedObjective)
+    // {
+    //     if (objectivesList[currentObjectiveIndex] == completedObjective)
+    //         UnlockNextObjective();
+    // }
+
+    // private void UnlockNextObjective()
+    // {
+    //     currentObjectiveIndex++;
+
+    //     // Check if there are any more objectives
+    //     if (currentObjectiveIndex >= objectivesList.Count)
+    //     {
+    //         //Objectives exhausted
+    //     }
+
+    //     // Activate next objective
+    //     ObjectiveData nextObjective = objectivesList[currentObjectiveIndex];
+    //     nextObjective.state = ObjectiveState.Active;
+
+    //     // Trigger Update Event
+    //     ObjectiveEvents.TriggerObjectiveUpdated(nextObjective);
+    // }
+
+
+    private BossScenario GetRandomScenario()
+    {
+        if (possibleScenarios == null || possibleScenarios.Length == 0)
+        {
+            Debug.LogError("There be no scenarios in the possible scenarios array");
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, possibleScenarios.Length);
+        return possibleScenarios[randomIndex];
     }
 }
