@@ -1,21 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum Outcome {Best, Mid, Worst};
 
-public class ObjectiveManager : MonoBehaviour
+public class OutcomeManager : MonoBehaviour
 {
-    public static ObjectiveManager Instance {get; private set;}
-
-    [SerializeField] List<ObjectiveData> objectivesList = new List<ObjectiveData>();
-
-    private int currentObjectiveIndex = 0;
+    public static OutcomeManager Instance {get; private set;}
 
     [SerializeField] BossScenario[] possibleScenarios;
-    [SerializeField] PotionData[] availablePotions;
 
     private BossScenario currentScenario;
-    private PotionData submittedPotion;
 
     private void Awake()
     {
@@ -29,7 +24,7 @@ public class ObjectiveManager : MonoBehaviour
             return;
         }
 
-        // InitializeSequence();
+        InitializeSequence();
         
     }
 
@@ -41,22 +36,20 @@ public class ObjectiveManager : MonoBehaviour
         }
     }
 
-    private Outcome EvaluateOutcome()
+    public Outcome EvaluateOutcome(PotionData givenPotion)
     {
-        for (int i = 0; i <= currentScenario.bestOutcomePotions.Length; i++)
-        {
-            if (submittedPotion == currentScenario.bestOutcomePotions[i])
-                return Outcome.Best;
-        }
+        if (currentScenario.bestOutcomePotions.Contains(givenPotion))
+            return Outcome.Best;
 
-        for (int i = 0; i <= currentScenario.worstOutcomePotions.Length; i++)
-        {
-            if (submittedPotion == currentScenario.worstOutcomePotions[i])
-                return Outcome.Worst;
-        }
+        if (currentScenario.worstOutcomePotions.Contains(givenPotion))
+            return Outcome.Worst;
 
-        return Outcome.Mid;
+        // Roll a 50/50 value to determine if the okay result becomes good or bad
+        bool isGood = Random.value < 0.5f;
+        return isGood ? Outcome.Best : Outcome.Worst;
     }
+
+
 
     // private void OnEnable()
     // {

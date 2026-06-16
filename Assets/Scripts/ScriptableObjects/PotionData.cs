@@ -5,4 +5,5 @@ public class PotionData : ScriptableObject
 {
     public string potionID;
     public string potionName;
+    public GameObject prefab;
 }
