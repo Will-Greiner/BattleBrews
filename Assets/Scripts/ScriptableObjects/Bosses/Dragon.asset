@@ -15,4 +15,5 @@ MonoBehaviour:
   bossID: dragme
   bestOutcomePotions:
   - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
-  worstOutcomePotions: []
+  worstOutcomePotions:
+  - {fileID: 11400000, guid: 3c761cdb20785b046878b5257d454d4e, type: 2}

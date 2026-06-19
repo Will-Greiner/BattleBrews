@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03734994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,23 +18,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.15009046
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.49999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.50000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.50000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.49999997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -62,6 +62,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 821980156247358742}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6894733169213654873}
   m_SourcePrefab: {fileID: 100100000, guid: 917ddc5247756e24293415d42007fe9b, type: 3}
 --- !u!1 &5575481746810101503 stripped
 GameObject:
@@ -90,7 +93,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -116,3 +119,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.020000003, y: 0.02494858, z: 0.68175346}
   m_Center: {x: -0.000000005122274, y: -8.056957e-10, z: -0.10987705}
+--- !u!114 &6894733169213654873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575481746810101503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4262bec3e4f01c4f991d938c15cbb28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ingredient
+  ingredient: {fileID: 11400000, guid: af0c81fc00d01fb4095c047d03920b83, type: 2}

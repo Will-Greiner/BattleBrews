@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Potion : MonoBehaviour, IHandInteractable
+public class Ingredient : MonoBehaviour, IHandInteractable
 {
-    public PotionData potionData;
+    public IngredientData ingredient;
 
     public void Interact(HandLogic hand)
     {

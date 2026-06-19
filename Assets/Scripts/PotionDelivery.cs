@@ -24,6 +24,8 @@ public class PotionDelivery : MonoBehaviour
 
         Debug.Log(OutcomeManager.Instance.EvaluateOutcome(potion.potionData));
 
+        CharacterManager.Instance.GenerateCharacter();
+
         hand.ClearHeldObject();
     }
 }

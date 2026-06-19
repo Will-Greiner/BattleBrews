@@ -211,6 +211,30 @@ public class HandLogic : MonoBehaviour
         }
     }
 
+    public void PickUpExisitingObject(GameObject objectToPickUp)
+    {
+        if (isHolding)
+            return;
+
+        heldObject = objectToPickUp;
+
+        heldObject.transform.SetParent(grabPoint);
+        heldObject.transform.localPosition = Vector3.zero;
+        heldObject.transform.localRotation = Quaternion.identity;
+
+        originalHeldLayer = heldObject.layer;
+        SetLayerRecursively(heldObject, heldItemLayer);
+
+        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.useGravity = false;
+            rb.isKinematic = true;
+        }
+    }
+
     public GameObject GetHeldObject()
     {
         return heldObject;
