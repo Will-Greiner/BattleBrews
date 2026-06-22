@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Cauldron : MonoBehaviour, IHandInteractable
 {
-    [SerializeField] List<PotionData> allPossibleRecipes = new List<PotionData>();
+    [SerializeField] RecipeDatabase allPossibleRecipes;
     [SerializeField] Transform potionSpawn;
     private List<IngredientData> addedIngredients = new List<IngredientData>();
 
@@ -19,7 +19,7 @@ public class Cauldron : MonoBehaviour, IHandInteractable
 
     public PotionData CheckForFulfilledRecipe()
     {
-        foreach (PotionData potion in allPossibleRecipes)
+        foreach (PotionData potion in allPossibleRecipes.allRecipes)
         {
             if (IsRecipeFulfilled(addedIngredients, potion.requiredIngredients))
                 return potion;
@@ -28,25 +28,29 @@ public class Cauldron : MonoBehaviour, IHandInteractable
         return null;
     }
 
-    private bool IsRecipeFulfilled(List<IngredientData> added, List<IngredientData> required)
+    private bool IsRecipeFulfilled(List<IngredientData> added, List<IngredientRequirement> required)
     {
-        // If there aren't enough ingredients added, return false
-        if (added.Count != required.Count)
-            return false;
+        int totalRequired = 0;
 
-        // Add the added ingredient into a duplicate array to check progress
-        List<IngredientData> addedCopy = new List<IngredientData>(added);
-
-        foreach (IngredientData requiredIngredient in required)
+        foreach (IngredientRequirement requirement in required)
         {
-            // If there is no matching required Ingredient to remove from the duplicate array, then the recipe is incorrect
-            // aka If we can't remove a matching ingredient from the array, then return false.
-            if (!addedCopy.Remove(requiredIngredient))
+            totalRequired += requirement.quantity;
+
+            int addedAmount = 0;
+
+            foreach (IngredientData ingredient in added)
+            {
+                if (ingredient == requirement.ingredient)
+                    addedAmount++;
+            }
+
+            if (addedAmount < requirement.quantity)
+            {
                 return false;
+            }
         }
 
-        // If the addCopy array is empty, then the recipe is fulfilled
-        return true;
+        return added.Count == totalRequired;
     }
 
     public void AddIngredient(IngredientData ingredient)
@@ -62,6 +66,10 @@ public class Cauldron : MonoBehaviour, IHandInteractable
     private void BrewPotion(PotionData potion)
     {
         addedIngredients.Clear();
+
+        potion.isDiscovered = true;
+
+        RecipeBook.Instance.RefreshBook();
 
         GameObject spawnedPotion = Instantiate(potion.prefab, potionSpawn.position, Quaternion.identity);
         Rigidbody rb = spawnedPotion.GetComponent<Rigidbody>();

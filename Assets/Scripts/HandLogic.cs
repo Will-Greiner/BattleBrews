@@ -38,6 +38,8 @@ public class HandLogic : MonoBehaviour
     private GameObject heldObject;
     public bool isHolding => heldObject != null;
 
+    public bool inputLocked = false;
+
     public static HandLogic Instance {get; private set;}
 
     private void Awake()
@@ -94,7 +96,11 @@ public class HandLogic : MonoBehaviour
             }
         }
         
-        MoveCamera();
+        if (!inputLocked)
+        {
+            MoveCamera();
+            return;
+        }
     }
 
     private void MoveCamera()

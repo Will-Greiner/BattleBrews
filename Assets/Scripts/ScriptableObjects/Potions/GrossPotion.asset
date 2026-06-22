@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: GrossPotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
-  potionID: 
-  potionName: 
+  icon: {fileID: 0}
+  potionName: Gross Potion
   prefab: {fileID: 8803269124150999872, guid: 9dda2f669db52f543a3111793d04cac2, type: 3}
   requiredIngredients:
-  - {fileID: 11400000, guid: 11f6c6f6c2f55ad4bbb26d6beeefb941, type: 2}
-  - {fileID: 11400000, guid: af0c81fc00d01fb4095c047d03920b83, type: 2}
+  - ingredient: {fileID: 11400000, guid: af0c81fc00d01fb4095c047d03920b83, type: 2}
+    quantity: 2
+  - ingredient: {fileID: 11400000, guid: 11f6c6f6c2f55ad4bbb26d6beeefb941, type: 2}
+    quantity: 1
+  isDiscovered: 1

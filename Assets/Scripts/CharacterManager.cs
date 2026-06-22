@@ -35,12 +35,12 @@ public class CharacterManager : MonoBehaviour
         GameObject[][] allArrays = new GameObject[][] {hatObjects, hairObjects, facialHairObjects, armorObjects};
         
         // Cycle through each array and select a random object
-        for (int i = 0; i < allArrays.Length; i++)
-        {
-            int randomIndex = Random.Range(0, allArrays[i].Length);
+        // for (int i = 0; i < allArrays.Length; i++)
+        // {
+        //     int randomIndex = Random.Range(0, allArrays[i].Length);
 
-            Instantiate(allArrays[i][randomIndex], spawnTransforms[i].position, Quaternion.identity, spawnParent);
-        }
+        //     Instantiate(allArrays[i][randomIndex], spawnTransforms[i].position, Quaternion.identity, spawnParent);
+        // }
     }
 
     public void ClearCharacter()

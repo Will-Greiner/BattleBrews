@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Ingredient : MonoBehaviour, IHandInteractable
 {
@@ -11,4 +12,11 @@ public class Ingredient : MonoBehaviour, IHandInteractable
 
         hand.PickUpExisitingObject(gameObject);
     }
+}
+
+[System.Serializable]
+public class IngredientRequirement
+{
+    public IngredientData ingredient;
+    public int quantity = 1;
 }

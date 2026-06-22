@@ -22,9 +22,7 @@ public class PotionDelivery : MonoBehaviour
         if (potion == null)
             return;
 
-        Debug.Log(OutcomeManager.Instance.EvaluateOutcome(potion.potionData));
-
-        CharacterManager.Instance.GenerateCharacter();
+        OutcomeManager.Instance.DetermineFighterFate(OutcomeManager.Instance.EvaluateOutcome(potion.potionData));
 
         hand.ClearHeldObject();
     }

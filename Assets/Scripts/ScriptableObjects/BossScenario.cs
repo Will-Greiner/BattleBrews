@@ -6,4 +6,6 @@ public class BossScenario : ScriptableObject
     public string bossID;
     public PotionData[] bestOutcomePotions;
     public PotionData[] worstOutcomePotions;
+    public int beginningRound;
+    public int endRound;
 }
