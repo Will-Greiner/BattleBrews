@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses:
@@ -93,31 +93,39 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _Bubble_Intensity: 279.59
-    - _Bubble_Speed: 0.57
+    - _Bubble_Speed: 1.63
     - _BumpScale: 1
     - _CastShadows: 1
-    - _Cell_Density: 6.4
+    - _Cell_Density: 5.85
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DisplacementDivisor: 30.11
-    - _Displacement_Intensity: 5
+    - _DisplacementDivisor: 36.3
+    - _Displacement_Intensity: 2.7
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _Emission_Intensity: 2.79
     - _EnvironmentReflections: 1
+    - _Foam_Distance: 1.76
+    - _Foam_Scale: 2
+    - _Fresnel_Intensity: 4.21
+    - _Fresnel_Power: 3.3
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Intersection_Depth: 0.5
+    - _Intersection_Power: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _Occlusion_Strength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RotationSpeed: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -132,12 +140,13 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Base_Color: {r: 0.14269894, g: 0.4339623, b: 0.12486649, a: 1}
+    - _Base_Color: {r: 0.14117648, g: 0.4627451, b: 0.4052809, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Foam_Color: {r: 0, g: 0.8867924, b: 0.8119005, a: 1}
     - _Intersection_Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Light_Color: {r: 0.16078432, g: 0.62352943, b: 0.18431373, a: 1}
-    - _RimColor: {r: 0.9348426, g: 0, b: 1, a: 1}
+    - _Light_Color: {r: 0.27754536, g: 0.5943396, b: 0.4359425, a: 1}
+    - _RimColor: {r: 0.57947886, g: 0.8584906, b: 0.06074225, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
