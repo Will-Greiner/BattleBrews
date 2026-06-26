@@ -4359,6 +4359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Analyzer
   allRecipes: {fileID: 11400000, guid: b61e0ce192e629549b8383f2f8bd0f6d, type: 2}
   maxIngredients: 3
+  inputDisplayTransforms: []
   potionEntryTransform: {fileID: 59883609}
   potionEntryPrefab: {fileID: 5286637701470234557, guid: 73d4f7fd6381dd04c89521ec95fdeaf9, type: 3}
 --- !u!114 &1486242810
