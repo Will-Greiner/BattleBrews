@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
+using TMPro;
 
 public enum Outcome {Best, Mid, Worst};
 
@@ -9,12 +11,19 @@ public class OutcomeManager : MonoBehaviour
     public static OutcomeManager Instance {get; private set;}
 
     [SerializeField] BossScenario[] allScenarios;
+    [SerializeField] int lives = 3;
 
-    private List<BossScenario> possibleScenarios = new List<BossScenario>();
+    private readonly List<BossScenario> possibleScenarios = new();
 
     private BossScenario currentScenario;
+    private PotionData requestedPotion;
     private int currentRound = 1;
-    [SerializeField] int lives = 3;
+    [SerializeField] TMP_Text roundText;
+
+    public BossScenario CurrentScenario => currentScenario;
+    public PotionData RequestedPotion => requestedPotion;
+    public int CurrentRound => currentRound;
+    public int Lives => lives;
 
     private void Awake()
     {
@@ -27,42 +36,66 @@ public class OutcomeManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        InitializeRound();
-        
     }
 
     private void Start()
     {
+        StartRound();
+    }
+
+    private void StartRound()
+    {
+        roundText.text = "Round: " + currentRound.ToString();
+
+        SelectScenario();
+        SelectRequestedPotion();
+
+        CharacterManager.Instance.GenerateCharacter();
+
+        PotionRequestUI.Instance.ShowPotionRequest(currentScenario.bossName, requestedPotion.potionName, requestedPotion.icon);
+    
         TimeManager.Instance.StartTimer(currentRound);
     }
 
-    private void InitializeRound()
+    private void SelectScenario()
     {
-        Debug.Log("Round:" + currentRound);
-
-        // Recalculate possible bosses each round
         possibleScenarios.Clear();
 
         foreach (BossScenario scenario in allScenarios)
         {
-            // Filter out bosses based on a range --- 0 is infinity
-            if (currentRound >= scenario.beginningRound && (scenario.endRound == 0 || currentRound <= scenario.endRound))
+            if (currentRound >= scenario.beginningRound &&
+                (scenario.endRound == 0 || currentRound <= scenario.endRound))
+            {
                 possibleScenarios.Add(scenario);
+            }
         }
 
-        if (possibleScenarios.Count > 0)
+        if (possibleScenarios.Count == 0)
         {
-            currentScenario = GetRandomScenario();
+            Debug.LogError("No valid scenarios for round " + currentRound);
+            currentScenario = null;
+            return;
         }
+
+        currentScenario = possibleScenarios[Random.Range(0, possibleScenarios.Count)];
+    }
+
+    private void SelectRequestedPotion()
+    {
+        if (currentScenario.bestOutcomePotions == null || currentScenario.bestOutcomePotions.Length == 0)
+        {
+            Debug.LogError("Current scenario has no requested potion options.");
+            requestedPotion = null;
+            return;
+        }
+
+        requestedPotion = currentScenario.bestOutcomePotions[Random.Range(0, currentScenario.bestOutcomePotions.Length)];
     }
 
     public void IncrementRound()
     {
         currentRound++;
-        TimeManager.Instance.StartTimer(currentRound);
-        InitializeRound();
-        CharacterManager.Instance.GenerateCharacter();
+        StartRound();
     }
 
     public Outcome EvaluateOutcome(PotionData givenPotion)
@@ -74,8 +107,7 @@ public class OutcomeManager : MonoBehaviour
             return Outcome.Worst;
 
         // Roll a 50/50 value to determine if the okay result becomes good or bad
-        bool isGood = Random.value < 0.5f;
-        return isGood ? Outcome.Best : Outcome.Worst;
+        return Random.value < 0.5f ? Outcome.Best : Outcome.Worst;
     }
 
     public void DetermineFighterFate(Outcome currentOutcome)
@@ -84,19 +116,14 @@ public class OutcomeManager : MonoBehaviour
         {
             lives--;
 
-            if (lives == 0)
+            if (lives <= 0)
             {
                 Debug.Log("You Gamed Over");
-            }
-            else
-            {
-                IncrementRound();
+                return;
             }
         }
-        else 
-        {
-            IncrementRound();
-        }
+
+        IncrementRound();
     }
 
     private BossScenario GetRandomScenario()

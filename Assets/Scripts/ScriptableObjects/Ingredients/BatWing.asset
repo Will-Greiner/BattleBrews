@@ -17,3 +17,4 @@ MonoBehaviour:
   prefab: {fileID: 9131887878571836955, guid: bd904851004586540b5bb877cc42231b, type: 3}
   cookedPrefab: {fileID: 8523907007946626545, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}
   crushedPrefab: {fileID: 0}
+  displayPrefab: {fileID: 3691044700918929856, guid: 26f1c4c8a7f27b148b2ac253342be5f9, type: 3}

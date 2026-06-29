@@ -1,61 +1,86 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
+
+[System.Serializable]
+public class CauldronIngredientSlot
+{
+    public IngredientData ingredient;
+    public int quantity;
+}
+
+[System.Serializable]
+public class CauldronDisplaySlot
+{
+    public Transform prefabParent;
+    public TMP_Text quantityText;
+
+    [HideInInspector] public GameObject spawnedDisplayObject;
+}
 
 public class Cauldron : MonoBehaviour, IHandInteractable
 {
+    [Header("Recipes")]
     [SerializeField] RecipeDatabase allPossibleRecipes;
+
+    [Header("Spawning")]
     [SerializeField] Transform potionSpawn;
-    private List<IngredientData> addedIngredients = new List<IngredientData>();
+
+    [Header("Cauldron Limits")]
+    [SerializeField] int maxIngredientTypes = 3;
+    [SerializeField] int maxQuantityPerIngredient = 5;
+
+    [Header("World Space 3D Display")]
+    [SerializeField] GameObject uiRoot;
+    [SerializeField] List<CauldronDisplaySlot> displaySlots = new();
+
+    private List<CauldronIngredientSlot> addedIngredients = new();
 
     public void Interact(HandLogic hand)
     {
-        // if (hand.isHolding)
-        //     return;
+        ClearCauldron();
+    }
 
-        // hand.HoldObject(potionToSpawn.prefab);
+    private void ClearCauldron()
+    {
         addedIngredients.Clear();
+        UpdateDisplay();
         Debug.Log("Emptied Cauldron");
-    }
-
-    public PotionData CheckForFulfilledRecipe()
-    {
-        foreach (PotionData potion in allPossibleRecipes.allRecipes)
-        {
-            if (IsRecipeFulfilled(addedIngredients, potion.requiredIngredients))
-                return potion;
-        }
-
-        return null;
-    }
-
-    private bool IsRecipeFulfilled(List<IngredientData> added, List<IngredientRequirement> required)
-    {
-        int totalRequired = 0;
-
-        foreach (IngredientRequirement requirement in required)
-        {
-            totalRequired += requirement.quantity;
-
-            int addedAmount = 0;
-
-            foreach (IngredientData ingredient in added)
-            {
-                if (ingredient == requirement.ingredient)
-                    addedAmount++;
-            }
-
-            if (addedAmount < requirement.quantity)
-            {
-                return false;
-            }
-        }
-
-        return added.Count == totalRequired;
     }
 
     public void AddIngredient(IngredientData ingredient)
     {
-        addedIngredients.Add(ingredient);
+        if (ingredient == null)
+            return;
+
+        CauldronIngredientSlot existingSlot = GetSlotForIngredient(ingredient);
+
+        if (existingSlot != null)
+        {
+            if (existingSlot.quantity >= maxQuantityPerIngredient)
+            {
+                Debug.Log("Max quantity reached for " + ingredient.name);
+                return;
+            }
+
+            existingSlot.quantity++;
+        }
+        else
+        {
+            if (addedIngredients.Count >= maxIngredientTypes)
+            {
+                Debug.Log("Cauldron already has 3 ingredient types.");
+                return;
+            }
+
+            addedIngredients.Add(new CauldronIngredientSlot
+            {
+                ingredient = ingredient,
+                quantity = 1
+            });
+        }
+
+        UpdateDisplay();
 
         PotionData result = CheckForFulfilledRecipe();
 
@@ -63,28 +88,124 @@ public class Cauldron : MonoBehaviour, IHandInteractable
             BrewPotion(result);
     }
 
+    private CauldronIngredientSlot GetSlotForIngredient(IngredientData ingredient)
+    {
+        foreach (CauldronIngredientSlot slot in addedIngredients)
+        {
+            if (slot.ingredient == ingredient)
+                return slot;
+        }
+
+        return null;
+    }
+
+    public PotionData CheckForFulfilledRecipe()
+    {
+        foreach (PotionData potion in allPossibleRecipes.allRecipes)
+        {
+            if (IsRecipeFulfilled(potion.requiredIngredients))
+                return potion;
+        }
+
+        return null;
+    }
+
+    private bool IsRecipeFulfilled(List<IngredientRequirement> required)
+    {
+        if (addedIngredients.Count != required.Count)
+            return false;
+
+        foreach (IngredientRequirement requirement in required)
+        {
+            CauldronIngredientSlot slot = GetSlotForIngredient(requirement.ingredient);
+
+            if (slot == null)
+                return false;
+
+            if (slot.quantity != requirement.quantity)
+                return false;
+        }
+
+        return true;
+    }
+
     private void BrewPotion(PotionData potion)
     {
-        addedIngredients.Clear();
+        ClearCauldron();
 
         potion.isDiscovered = true;
-
         RecipeBook.Instance.RefreshBook();
 
-        GameObject spawnedPotion = Instantiate(potion.prefab, potionSpawn.position, Quaternion.identity);
+        GameObject spawnedPotion = Instantiate(
+            potion.prefab,
+            potionSpawn.position,
+            Quaternion.identity
+        );
+
         Rigidbody rb = spawnedPotion.GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.isKinematic = true;
+
+        if (rb != null)
+        {
+            rb.useGravity = false;
+            rb.isKinematic = true;
+        }
+    }
+
+    private void UpdateDisplay()
+    {
+        for (int i = 0; i < displaySlots.Count; i++)
+        {
+            ClearDisplaySlot(displaySlots[i]);
+        }
+
+        for (int i = 0; i < addedIngredients.Count && i < displaySlots.Count; i++)
+        {
+            SetDisplaySlot(displaySlots[i], addedIngredients[i]);
+        }
+
+        if (uiRoot != null)
+            uiRoot.SetActive(addedIngredients.Count > 0);
+    }
+
+    private void SetDisplaySlot(CauldronDisplaySlot displaySlot, CauldronIngredientSlot ingredientSlot)
+    {
+        if (ingredientSlot.ingredient.displayPrefab != null && displaySlot.prefabParent != null)
+        {
+            GameObject spawned = Instantiate(
+                ingredientSlot.ingredient.displayPrefab,
+                displaySlot.prefabParent
+            );
+
+            spawned.transform.localPosition = Vector3.zero;
+            spawned.transform.localRotation = Quaternion.identity;
+            spawned.transform.localScale = Vector3.one;
+
+            displaySlot.spawnedDisplayObject = spawned;
+        }
+
+        if (displaySlot.quantityText != null)
+            displaySlot.quantityText.text = ingredientSlot.quantity.ToString();
+    }
+
+    private void ClearDisplaySlot(CauldronDisplaySlot displaySlot)
+    {
+        if (displaySlot.spawnedDisplayObject != null)
+            Destroy(displaySlot.spawnedDisplayObject);
+
+        displaySlot.spawnedDisplayObject = null;
+
+        if (displaySlot.quantityText != null)
+            displaySlot.quantityText.text = "";
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Ingredient ingredient = other.GetComponent<Ingredient>();
+        Ingredient ingredient = other.GetComponentInParent<Ingredient>();
+
 
         if (ingredient != null)
         {
             AddIngredient(ingredient.ingredient);
-
             Destroy(other.gameObject);
         }
     }

@@ -17,11 +17,15 @@ public class HandLogic : MonoBehaviour
     [Space]
     [Header("Camera Rotation Settings")]
     [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float rotationSmoothTime = 0.2f;
     [SerializeField] private float rotationBarSize = 0.2f;
     public GameObject cameraEmpty;
     Vector2 mousePercent;
     [SerializeField] private float rotationAmount = 50f;
+
+    private float targetY = 0f;
     private float currentY = 0f;
+    private float rotationVelocity = 0f;
 
     [Space]
     [Header("Interact Settings")]
@@ -103,24 +107,61 @@ public class HandLogic : MonoBehaviour
         }
     }
 
-    private void MoveCamera()
+private void MoveCamera()
+{
+    mousePercent = camera.ScreenToViewportPoint(Input.mousePosition);
+
+    float input = 0f;
+
+    if (mousePercent.x > 1f - rotationBarSize)
     {
-        //Moving camera
-        mousePercent = camera.ScreenToViewportPoint(Input.mousePosition);
-        if (mousePercent.x > 1f - rotationBarSize)
-        {
-            currentY += rotationSpeed * Time.deltaTime;
-            currentY = Mathf.Clamp(currentY, -rotationAmount, rotationAmount);
-            cameraEmpty.transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
-        }
-        else if (mousePercent.x < rotationBarSize)
-        {
-            currentY -= rotationSpeed * Time.deltaTime;
-            currentY = Mathf.Clamp(currentY, -rotationAmount, rotationAmount);
-            cameraEmpty.transform.localRotation =
-            Quaternion.Euler(0f, currentY, 0f);
-        }
+        input = Mathf.InverseLerp(
+            1f - rotationBarSize,
+            1f,
+            mousePercent.x
+        );
     }
+    else if (mousePercent.x < rotationBarSize)
+    {
+        input = -Mathf.InverseLerp(
+            rotationBarSize,
+            0f,
+            mousePercent.x
+        );
+    }
+
+    targetY += input * rotationSpeed * Time.deltaTime;
+    targetY = Mathf.Clamp(targetY, -rotationAmount, rotationAmount);
+
+    currentY = Mathf.SmoothDamp(
+        currentY,
+        targetY,
+        ref rotationVelocity,
+        rotationSmoothTime
+    );
+
+    cameraEmpty.transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
+
+    // if (mousePercent.x > 1f - rotationBarSize)
+    // {
+    //     targetY += rotationSpeed * Time.deltaTime;
+    // }
+    // else if (mousePercent.x < rotationBarSize)
+    // {
+    //     targetY -= rotationSpeed * Time.deltaTime;
+    // }
+
+    // targetY = Mathf.Clamp(targetY, -rotationAmount, rotationAmount);
+
+    // currentY = Mathf.SmoothDamp(
+    //     currentY,
+    //     targetY,
+    //     ref rotationVelocity,
+    //     rotationSmoothTime
+    // );
+
+    // cameraEmpty.transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
+}
 
     private void MoveHand(Ray ray)
     {

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f82944f55ddca742839d9149a0957ed, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
-  itemID: Apple
+  icon: {fileID: 0}
   itemName: 
-  prefab: {fileID: 8523907007946626545, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}
+  prefab: {fileID: 5740551100710034288, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}
+  cookedPrefab: {fileID: 0}
+  crushedPrefab: {fileID: 0}
+  displayPrefab: {fileID: 598149363775613422, guid: 1d6c0e58a5f865a45ad43a010476983f, type: 3}

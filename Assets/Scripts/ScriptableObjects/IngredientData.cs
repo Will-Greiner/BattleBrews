@@ -9,4 +9,5 @@ public class IngredientData : ScriptableObject
     public GameObject prefab;
     public GameObject cookedPrefab;
     public GameObject crushedPrefab;
+    public GameObject displayPrefab;
 }
