@@ -109,7 +109,7 @@ Material:
     - _DstBlendAlpha: 0
     - _Emission_Intensity: 2.79
     - _EnvironmentReflections: 1
-    - _Foam_Distance: 1.76
+    - _Foam_Distance: 1.09
     - _Foam_Scale: 2
     - _Fresnel_Intensity: 4.21
     - _Fresnel_Power: 3.3
