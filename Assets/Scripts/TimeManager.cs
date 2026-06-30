@@ -9,9 +9,11 @@ public class TimeManager : MonoBehaviour
     [SerializeField] int secondsLostPerRound = 30;
 
     [SerializeField] TMP_Text timerText;
+    [SerializeField] GameObject clockUI;
 
     private int currentAvailableTime;
     private float timer;
+    private bool timerRunning;
 
     private void Awake()
     {
@@ -24,9 +26,29 @@ public class TimeManager : MonoBehaviour
 
     public void StartTimer(int roundNumber)
     {
+        timerRunning = true;
         currentAvailableTime = Mathf.Max(30, startingTimeInSeconds - ((roundNumber - 1) * secondsLostPerRound));
         timer = 0f;
         timerText.text = GetTimeString();
+    }
+
+    public void StopTimer()
+    {
+        timerRunning = false;
+        currentAvailableTime = 0;
+        timer = 0f;
+
+        timerText.text = "00:00";
+    }
+
+    public void PauseTimer()
+    {
+        timerRunning = false;
+    }
+
+    public void ResumeTimer()
+    {
+        timerRunning = true;
     }
 
     public string GetTimeString()
@@ -39,17 +61,37 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentAvailableTime <= 0)
+        if (!timerRunning)
             return;
+
+        if (currentAvailableTime <= 0)
+        {
+            timerRunning = false;
+
+            // Handle timer running out
+            OutcomeManager.Instance.DetermineFighterFate(Outcome.Worst);
+
+            return;
+        }
 
         timer += Time.deltaTime;
 
         if (timer >= 1f)
         {
-            timer = 0f;
+            timer -= 1f; 
             currentAvailableTime--;
 
             timerText.text = GetTimeString();
         }
+    }
+
+    public void ShowClock()
+    {
+        clockUI.SetActive(true);
+    }
+
+    public void HideClock()
+    {
+        clockUI.SetActive(false);
     }
 }

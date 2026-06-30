@@ -65,11 +65,13 @@ public class HandLogic : MonoBehaviour
 
     void Update()
     {
+        if (inputLocked)
+            return;
+
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-        
+
         MoveHand(ray);
-        
-        // Momentum Calculation
+
         handVelocity = (transform.position - lastPosition) / Time.deltaTime;
         lastPosition = transform.position;
 
@@ -77,91 +79,79 @@ public class HandLogic : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            // If not holding anything, see if we can interact/pickup something
             if (!isHolding)
-            {
                 TryInteract(ray);
-            }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            // If we have something and are in the delivery zone, deliver it otherwise drop it
             if (isHolding)
             {
                 if (currentDeliveryZone != null)
-                {
                     currentDeliveryZone.Deliver(this);
-                }
                 else
-                {
                     DropHeldObject();
-                }
             }
         }
-        
-        if (!inputLocked)
+
+        MoveCamera();
+    }
+
+    private void MoveCamera()
+    {
+        mousePercent = camera.ScreenToViewportPoint(Input.mousePosition);
+
+        float input = 0f;
+
+        if (mousePercent.x > 1f - rotationBarSize)
         {
-            MoveCamera();
-            return;
+            input = Mathf.InverseLerp(
+                1f - rotationBarSize,
+                1f,
+                mousePercent.x
+            );
         }
-    }
+        else if (mousePercent.x < rotationBarSize)
+        {
+            input = -Mathf.InverseLerp(
+                rotationBarSize,
+                0f,
+                mousePercent.x
+            );
+        }
 
-private void MoveCamera()
-{
-    mousePercent = camera.ScreenToViewportPoint(Input.mousePosition);
+        targetY += input * rotationSpeed * Time.deltaTime;
+        targetY = Mathf.Clamp(targetY, -rotationAmount, rotationAmount);
 
-    float input = 0f;
-
-    if (mousePercent.x > 1f - rotationBarSize)
-    {
-        input = Mathf.InverseLerp(
-            1f - rotationBarSize,
-            1f,
-            mousePercent.x
+        currentY = Mathf.SmoothDamp(
+            currentY,
+            targetY,
+            ref rotationVelocity,
+            rotationSmoothTime
         );
+
+        cameraEmpty.transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
+
+        // if (mousePercent.x > 1f - rotationBarSize)
+        // {
+        //     targetY += rotationSpeed * Time.deltaTime;
+        // }
+        // else if (mousePercent.x < rotationBarSize)
+        // {
+        //     targetY -= rotationSpeed * Time.deltaTime;
+        // }
+
+        // targetY = Mathf.Clamp(targetY, -rotationAmount, rotationAmount);
+
+        // currentY = Mathf.SmoothDamp(
+        //     currentY,
+        //     targetY,
+        //     ref rotationVelocity,
+        //     rotationSmoothTime
+        // );
+
+        // cameraEmpty.transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
     }
-    else if (mousePercent.x < rotationBarSize)
-    {
-        input = -Mathf.InverseLerp(
-            rotationBarSize,
-            0f,
-            mousePercent.x
-        );
-    }
-
-    targetY += input * rotationSpeed * Time.deltaTime;
-    targetY = Mathf.Clamp(targetY, -rotationAmount, rotationAmount);
-
-    currentY = Mathf.SmoothDamp(
-        currentY,
-        targetY,
-        ref rotationVelocity,
-        rotationSmoothTime
-    );
-
-    cameraEmpty.transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
-
-    // if (mousePercent.x > 1f - rotationBarSize)
-    // {
-    //     targetY += rotationSpeed * Time.deltaTime;
-    // }
-    // else if (mousePercent.x < rotationBarSize)
-    // {
-    //     targetY -= rotationSpeed * Time.deltaTime;
-    // }
-
-    // targetY = Mathf.Clamp(targetY, -rotationAmount, rotationAmount);
-
-    // currentY = Mathf.SmoothDamp(
-    //     currentY,
-    //     targetY,
-    //     ref rotationVelocity,
-    //     rotationSmoothTime
-    // );
-
-    // cameraEmpty.transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
-}
 
     private void MoveHand(Ray ray)
     {
@@ -318,5 +308,23 @@ private void MoveCamera()
         {
             SetLayerRecursively(child.gameObject, layer);
         }
+    }
+
+    public void ResetHandAndCamera()
+    {
+        currentDistance = defaultDistanceFromCamera;
+
+        targetY = 0f;
+        currentY = 0f;
+        rotationVelocity = 0f;
+
+        if (cameraEmpty != null)
+            cameraEmpty.transform.localRotation = Quaternion.identity;
+
+        if (grabPoint != null)
+            transform.position = grabPoint.position;
+
+        lastPosition = transform.position;
+        handVelocity = Vector3.zero;
     }
 }

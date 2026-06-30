@@ -25,6 +25,8 @@ public class OutcomeManager : MonoBehaviour
     public int CurrentRound => currentRound;
     public int Lives => lives;
 
+    private bool gameStarted = false;
+
     private void Awake()
     {
         if ( Instance == null)
@@ -38,9 +40,27 @@ public class OutcomeManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void StartGame()
     {
+        if (gameStarted)
+            return;
+
+        gameStarted = true;
+        currentRound = 1;
+        TimeManager.Instance.ShowClock();
+
         StartRound();
+    }
+
+    public void ResetGame()
+    {
+        currentRound = 1;
+        lives = 3;
+        currentScenario = null;
+
+        CharacterManager.Instance.ClearCharacter();
+
+        PotionRequestUI.Instance.HidePotionRequest();
     }
 
     private void StartRound()

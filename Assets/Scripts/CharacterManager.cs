@@ -22,11 +22,6 @@ public class CharacterManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Start()
-    {
-        GenerateCharacter();
-    }
-
     public void GenerateCharacter()
     {
         ClearCharacter();

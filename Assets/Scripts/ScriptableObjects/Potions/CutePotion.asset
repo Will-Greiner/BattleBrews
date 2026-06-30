@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: CutePotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
-  potionID: 
-  potionName: 
+  icon: {fileID: 0}
+  potionName: Cute Potion
+  prefab: {fileID: 6310475059916075538, guid: b76fe2e8127485f48beb93e15263a3d5, type: 3}
+  requiredIngredients:
+  - ingredient: {fileID: 11400000, guid: 014d496ef9e5faf47b593e6f93e20104, type: 2}
+    quantity: 10
+  - ingredient: {fileID: 11400000, guid: a14265ee83c41fa4bad2441df9d20125, type: 2}
+    quantity: 3
+  - ingredient: {fileID: 11400000, guid: 823e17d4d9f99f44b8556327ce11ee45, type: 2}
+    quantity: 4
+  isDiscovered: 0

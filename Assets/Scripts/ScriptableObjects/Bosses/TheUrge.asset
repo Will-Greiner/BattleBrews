@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1a32a5e1a5bfd40b2b334a79ae1efc, type: 3}
+  m_Name: TheUrge
+  m_EditorClassIdentifier: Assembly-CSharp::BossScenario
+  bossName: the Urge to Pee
+  bestOutcomePotions:
+  - {fileID: 11400000, guid: f0f7c112a79500c4ebcc56cd149a9950, type: 2}
+  worstOutcomePotions:
+  - {fileID: 11400000, guid: 638f86ae7226d2e4d84c6f60d16fb4cf, type: 2}
+  beginningRound: 0
+  endRound: 0

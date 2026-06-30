@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: RecipeDatabase
   m_EditorClassIdentifier: Assembly-CSharp::RecipeDatabase
   allRecipes:
+  - {fileID: 11400000, guid: f32713579b75df148bbd46b81c728ffa, type: 2}
+  - {fileID: 11400000, guid: 3c761cdb20785b046878b5257d454d4e, type: 2}
+  - {fileID: 11400000, guid: 2f7e5e228a950a0498ab8f8efefadd78, type: 2}
+  - {fileID: 11400000, guid: 2691028465d2be54cbafc09662aaf195, type: 2}
+  - {fileID: 11400000, guid: d8773a6fd759d784dbcff39cfdafc431, type: 2}
+  - {fileID: 11400000, guid: fcc8d7b97d5b7a9489769d218841a7ad, type: 2}
+  - {fileID: 11400000, guid: 5bf100aa1a2e92f4783fa3604838c527, type: 2}
+  - {fileID: 11400000, guid: e98b742ccce61ce44bc659cceb95c447, type: 2}
+  - {fileID: 11400000, guid: f0f7c112a79500c4ebcc56cd149a9950, type: 2}
   - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
-  - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
-  - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
+  - {fileID: 11400000, guid: cdfe700a53e48154c968b2391e86aa84, type: 2}
+  - {fileID: 11400000, guid: 638f86ae7226d2e4d84c6f60d16fb4cf, type: 2}
+  - {fileID: 11400000, guid: 9274e9aa28b7aac4aa66b0c5abdf1ab1, type: 2}
+  - {fileID: 11400000, guid: 9fe33190fa02a1946a28cd2204ce468b, type: 2}
+  - {fileID: 11400000, guid: cc25f7df486118a47a03237152e2ee0f, type: 2}
