@@ -699,7 +699,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
 --- !u!4 &86752823 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5056354596805018693, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 885830586395615864, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
   m_PrefabInstance: {fileID: 86752822}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &99064146
@@ -1936,19 +1936,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1748751344}
-    - targetCorrespondingSourceObject: {fileID: -7906137139777532620, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1784067975}
-    - targetCorrespondingSourceObject: {fileID: -7906137139777532620, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1267816413}
-    - targetCorrespondingSourceObject: {fileID: -7906137139777532620, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1132138482}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -9184491757916723841, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1787323920}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
 --- !u!4 &236573070 stripped
 Transform:
@@ -3543,6 +3540,7 @@ MonoBehaviour:
   throwMultiplier: 0.5
   maxThrowSpeed: 10
   rotationSpeed: 50
+  rotationSmoothTime: 0.2
   rotationBarSize: 0.2
   cameraEmpty: {fileID: 1047442076}
   rotationAmount: 50
@@ -5053,6 +5051,7 @@ MonoBehaviour:
   allScenarios:
   - {fileID: 11400000, guid: 016e27d6cec7a3c4ab3217a7ef021844, type: 2}
   lives: 3
+  roundText: {fileID: 0}
 --- !u!4 &788782607
 Transform:
   m_ObjectHideFlags: 0
@@ -5115,6 +5114,7 @@ MonoBehaviour:
   startingTimeInSeconds: 120
   secondsLostPerRound: 30
   timerText: {fileID: 1338371944}
+  clockUI: {fileID: 0}
 --- !u!4 &796251125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a7b66fa68937f9d4da57b6c37d02ed66, type: 3}
@@ -5459,7 +5459,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
 --- !u!4 &891666009 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5056354596805018693, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 885830586395615864, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
   m_PrefabInstance: {fileID: 891666008}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &904898929
@@ -6002,6 +6002,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cauldron
   allPossibleRecipes: {fileID: 11400000, guid: b61e0ce192e629549b8383f2f8bd0f6d, type: 2}
   potionSpawn: {fileID: 2005100210}
+  maxIngredientTypes: 3
+  maxQuantityPerIngredient: 5
+  uiRoot: {fileID: 0}
+  displaySlots: []
 --- !u!4 &973070746
 Transform:
   m_ObjectHideFlags: 0
@@ -6497,8 +6501,8 @@ Transform:
   m_LocalScale: {x: 0.50502, y: 0.50502, z: 0.50502}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 891666009}
   - {fileID: 86752823}
+  - {fileID: 891666009}
   m_Father: {fileID: 143640735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1019545617
@@ -6534,7 +6538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c9164bc3a25134aa158850e2c3dd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientSpawner
-  ingredientToSpawn: {fileID: 11400000, guid: 635a38dc18f13c345a374e72380a7bdf, type: 2}
+  ingredientToSpawn: {fileID: 11400000, guid: 11f6c6f6c2f55ad4bbb26d6beeefb941, type: 2}
 --- !u!1 &1019844043
 GameObject:
   m_ObjectHideFlags: 0
@@ -7002,7 +7006,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1787323921}
+  m_Father: {fileID: 558373180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135806441 stripped
 GameObject:
@@ -7883,7 +7887,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1787323921}
+  m_Father: {fileID: 558373180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1280542958
 GameObject:
@@ -9127,10 +9131,14 @@ MonoBehaviour:
   allRecipes: {fileID: 11400000, guid: b61e0ce192e629549b8383f2f8bd0f6d, type: 2}
   recipeEntryParent: {fileID: 396108980}
   recipeEntryPrefab: {fileID: 7639354761505630759, guid: c0525e8915cedec40afe1939ebcbf180, type: 3}
+  bookTransform: {fileID: 0}
+  viewCamera: {fileID: 0}
   viewPositionOffset: {x: 0, y: 0, z: 0.4}
   viewRotationOffset: {x: -90, y: 0, z: 0}
   closedTransform: {fileID: 2132405148}
-  openSpeed: 4.5
+  moveDuration: 0.75
+  animator: {fileID: 0}
+  bookUI: {fileID: 0}
 --- !u!4 &1391733455
 Transform:
   m_ObjectHideFlags: 0
@@ -9600,8 +9608,10 @@ MonoBehaviour:
   - {fileID: 331109769}
   - {fileID: 257772907}
   - {fileID: 424505145}
+  analyzerUI: {fileID: 0}
   potionEntryTransform: {fileID: 59883609}
   potionEntryPrefab: {fileID: 5286637701470234557, guid: 73d4f7fd6381dd04c89521ec95fdeaf9, type: 3}
+  analyzerCameraTarget: {fileID: 0}
 --- !u!114 &1486242810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10779,32 +10789,8 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1787323921}
+  m_Father: {fileID: 558373180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1787323918 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -9184491757916723841, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
-  m_PrefabInstance: {fileID: 231579180}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1787323920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1787323918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c4e42d622a81084991299f899473acc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FollowCursor
-  targetTransform: {fileID: 434034415}
-  RotationOffset: {x: 0, y: 0, z: 0}
---- !u!4 &1787323921 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -7906137139777532620, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
-  m_PrefabInstance: {fileID: 231579180}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1791555312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d8d59d3a30036144bd430e0eadaf8f6, type: 3}
