@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -413,7 +413,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
 --- !u!4 &86752823 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5056354596805018693, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 885830586395615864, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
   m_PrefabInstance: {fileID: 86752822}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &99064146
@@ -3076,7 +3076,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
 --- !u!4 &891666009 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5056354596805018693, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 885830586395615864, guid: 5ca4f2f8aefe0774c8be32a1c81e8b6a, type: 3}
   m_PrefabInstance: {fileID: 891666008}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &937517137
@@ -4001,8 +4001,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 891666009}
   - {fileID: 86752823}
+  - {fileID: 891666009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1019545617
@@ -5966,6 +5966,7 @@ MonoBehaviour:
   throwMultiplier: 0.3
   maxThrowSpeed: 10
   rotationSpeed: 50
+  rotationSmoothTime: 0.2
   rotationBarSize: 0.2
   cameraEmpty: {fileID: 1047442076}
   rotationAmount: 50
