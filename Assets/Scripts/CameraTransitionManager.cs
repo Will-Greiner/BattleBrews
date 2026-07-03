@@ -42,6 +42,7 @@ public class CameraTransitionManager : MonoBehaviour
     // Button: Start Game
     public void StartGame()
     {
+        Cursor.visible = false;
         StartTransition(StartGameRoutine());
     }
 
@@ -142,6 +143,7 @@ public class CameraTransitionManager : MonoBehaviour
 
     private IEnumerator FocusOnTargetRoutine(Transform target)
     {
+        Cursor.visible = true;
         LockGameplayInput(true);
 
         focusReturnPosition = gameplayCamera.transform.position;
@@ -168,6 +170,7 @@ public class CameraTransitionManager : MonoBehaviour
 
     private IEnumerator ReturnFromFocusRoutine()
     {
+        Cursor.visible = false;
         LockGameplayInput(true);
 
         menuCamera.enabled = true;

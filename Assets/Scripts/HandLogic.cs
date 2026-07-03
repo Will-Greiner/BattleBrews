@@ -13,7 +13,8 @@ public class HandLogic : MonoBehaviour
     private Vector3 handVelocity;
     [SerializeField] private float throwMultiplier = 0.3f;
     [SerializeField] private float maxThrowSpeed = 10f;
-    
+    [SerializeField] Animator animator;
+
     [Space]
     [Header("Camera Rotation Settings")]
     [SerializeField] private float rotationSpeed = 5f;
@@ -56,6 +57,7 @@ public class HandLogic : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         currentDistance = defaultDistanceFromCamera;
         lastPosition = transform.position;
 
@@ -191,7 +193,6 @@ public class HandLogic : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, ~layerToIgnore))
         {
             IHandInteractable interactable = hit.collider.GetComponentInParent<IHandInteractable>();
-
             if (interactable != null)
             {
                 interactable.Interact(this);
@@ -210,11 +211,10 @@ public class HandLogic : MonoBehaviour
         heldObject = Instantiate(prefab, grabPoint);
         heldObject.transform.localPosition = Vector3.zero;
         heldObject.transform.localRotation = Quaternion.identity;
-
+        animator.SetBool("Holding", true);
         // Change item to correct layer
         originalHeldLayer = heldObject.layer;
         SetLayerRecursively(heldObject, heldItemLayer);
-
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -230,7 +230,7 @@ public class HandLogic : MonoBehaviour
 
         GameObject droppedObject = heldObject;
         heldObject = null;
-
+        animator.SetBool("Holding", false);
         droppedObject.transform.parent = null;
         SetLayerRecursively(droppedObject, originalHeldLayer);
 
@@ -254,7 +254,7 @@ public class HandLogic : MonoBehaviour
             return;
 
         heldObject = objectToPickUp;
-
+        animator.SetBool("Holding", true);
         heldObject.transform.SetParent(grabPoint);
         heldObject.transform.localPosition = Vector3.zero;
         heldObject.transform.localRotation = Quaternion.identity;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
   icon: {fileID: 0}
   itemName: 
-  prefab: {fileID: 799595071676153098, guid: 37b44818ec456864a81c42e39c3d24f5, type: 3}
+  prefab: {fileID: 8975376853642873607, guid: 09e9a2e2f20d131429c5b301406a99e5, type: 3}
   cookedPrefab: {fileID: 8523907007946626545, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}
   crushedPrefab: {fileID: 0}
-  displayPrefab: {fileID: 3479953821155263163, guid: b160f48a2c4a82c4ab058a5987281ef4, type: 3}
+  displayPrefab: {fileID: 8975376853642873607, guid: 09e9a2e2f20d131429c5b301406a99e5, type: 3}
