@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Fruit Smoothie
-  prefab: {fileID: 6310475059916075538, guid: 5b4ae24fb2e17a740ac4ba44c2a07af9, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 1be480ba739536643b1dd93c8eee4a18, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 11f6c6f6c2f55ad4bbb26d6beeefb941, type: 2}
     quantity: 15

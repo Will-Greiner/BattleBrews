@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Enlargement Potion
-  prefab: {fileID: 6310475059916075538, guid: 07750fa982a07a14a81f626933cd9f67, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 89ebe1a4d9bba2840ac76c00c6c2f2c2, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 50cb1a458d67d204692589d44737f29b, type: 2}
     quantity: 8

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Speed Potion
-  prefab: {fileID: 6310475059916075538, guid: 13279a9a719d85e4d88ea3f6b84ee8a6, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 0d4e9fcb5700ce5408fc5461e0dd8235, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 06ddba0726e223d4394a4eabda450be1, type: 2}
     quantity: 20

@@ -9,7 +9,13 @@ public class AnalyzerPotionEntry : MonoBehaviour
 
     public void Setup(PotionData potion)
     {
-        potionIcon.sprite = potion.icon;
-        potionName.text = potion.name;
+        if (potion == null)
+            return;
+
+        if (potionIcon != null)
+            potionIcon.sprite = potion.icon;
+
+        if (potionName != null)
+            potionName.text = potion.potionName;
     }
 }

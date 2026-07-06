@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CartoonFlameMat
-  m_Shader: {fileID: -6465566751694194690, guid: 7e4f0e9f65661ff4e8f3002fddf4c63f, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 529c342817742bf47900f9485f6099df, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

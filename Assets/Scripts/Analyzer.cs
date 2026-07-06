@@ -27,12 +27,16 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
         if (Instance == null)
             Instance = this;
         else
+        {
             Destroy(gameObject);
+            return;
+        }
     }
 
     public void Interact(HandLogic hand)
     {
-        CameraTransitionManager.Instance.FocusOnTarget(analyzerCameraTarget);
+        if (CameraTransitionManager.Instance != null && analyzerCameraTarget != null)
+            CameraTransitionManager.Instance.FocusOnTarget(analyzerCameraTarget);
 
         if (analyzerUI != null)
             analyzerUI.SetActive(true);
@@ -48,6 +52,9 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
 
     private void AddIngredient(IngredientData ingredient)
     {
+        if (ingredient == null)
+            return;
+
         int slotIndex = providedIngredients.FindIndex(item => item == null);
 
         if (slotIndex == -1)
@@ -69,7 +76,11 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
 
     private void SpawnInputDisplay(IngredientData ingredient, int slotIndex)
     {
-        if (slotIndex < 0 || slotIndex >= inputDisplayTransforms.Length)
+        if (inputDisplayTransforms == null ||
+            slotIndex < 0 ||
+            slotIndex >= inputDisplayTransforms.Length ||
+            inputDisplayTransforms[slotIndex] == null ||
+            ingredient.displayPrefab == null)
             return;
 
         while (spawnedInputs.Count <= slotIndex)
@@ -85,6 +96,7 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
 
         displayObject.transform.localPosition = Vector3.zero;
         displayObject.transform.localRotation = Quaternion.identity;
+        displayObject.transform.localScale = Vector3.one;
 
         Rigidbody rb = displayObject.GetComponent<Rigidbody>();
         if (rb != null)
@@ -98,6 +110,9 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
 
     private void RefreshPotionResults()
     {
+        if (potionEntryTransform == null || potionEntryPrefab == null)
+            return;
+
         foreach (Transform child in potionEntryTransform)
             Destroy(child.gameObject);
 
@@ -108,9 +123,9 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
                 potionEntryTransform
             );
 
-            potionEntry
-                .GetComponent<AnalyzerPotionEntry>()
-                .Setup(potion);
+            AnalyzerPotionEntry entry = potionEntry.GetComponent<AnalyzerPotionEntry>();
+            if (entry != null)
+                entry.Setup(potion);
         }
     }
 
@@ -126,8 +141,11 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
 
         spawnedInputs.Clear();
 
-        foreach (Transform child in potionEntryTransform)
-            Destroy(child.gameObject);
+        if (potionEntryTransform != null)
+        {
+            foreach (Transform child in potionEntryTransform)
+                Destroy(child.gameObject);
+        }
     }
 
     public void ClearSlot(int slot)
@@ -150,12 +168,18 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
     {
         List<PotionData> matchingRecipes = new();
 
+        if (inputIngredients == null || allRecipes == null || allRecipes.allRecipes == null)
+            return matchingRecipes;
+
         List<IngredientData> validIngredients =
             inputIngredients.FindAll(ingredient => ingredient != null);
 
+        if (validIngredients.Count == 0)
+            return matchingRecipes;
+
         foreach (PotionData potion in allRecipes.allRecipes)
         {
-            if (DoRecipesMatch(validIngredients, potion.requiredIngredients))
+            if (potion != null && DoRecipesMatch(validIngredients, potion.requiredIngredients))
                 matchingRecipes.Add(potion);
         }
 
@@ -167,26 +191,44 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
         List<IngredientRequirement> requiredIngredients
     )
     {
-        foreach (IngredientData inputIngredient in inputIngredients)
+        if (requiredIngredients == null || requiredIngredients.Count == 0)
+            return false;
+
+        Dictionary<IngredientData, int> inputCounts = CountIngredients(inputIngredients);
+
+        foreach (KeyValuePair<IngredientData, int> input in inputCounts)
         {
             IngredientRequirement matchingRequirement =
                 requiredIngredients.Find(
-                    requirement => requirement.ingredient == inputIngredient
+                    requirement => requirement != null && requirement.ingredient == input.Key
                 );
 
             if (matchingRequirement == null)
                 return false;
 
-            int inputAmount =
-                inputIngredients.FindAll(
-                    ingredient => ingredient == inputIngredient
-                ).Count;
-
-            if (inputAmount > matchingRequirement.quantity)
+            if (input.Value > matchingRequirement.quantity)
                 return false;
         }
 
         return true;
+    }
+
+    private Dictionary<IngredientData, int> CountIngredients(List<IngredientData> ingredients)
+    {
+        Dictionary<IngredientData, int> ingredientCounts = new();
+
+        foreach (IngredientData ingredient in ingredients)
+        {
+            if (ingredient == null)
+                continue;
+
+            if (!ingredientCounts.ContainsKey(ingredient))
+                ingredientCounts[ingredient] = 0;
+
+            ingredientCounts[ingredient]++;
+        }
+
+        return ingredientCounts;
     }
 
     public bool CanReceiveItem(HandLogic hand)
@@ -202,7 +244,8 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
         if (heldObject == null)
             return false;
 
-        return heldObject.GetComponentInParent<Ingredient>() != null;
+        Ingredient ingredient = heldObject.GetComponentInParent<Ingredient>();
+        return ingredient != null && ingredient.ingredient != null;
     }
 
     public void ReceiveItem(HandLogic hand)
@@ -227,8 +270,11 @@ public class Analyzer : MonoBehaviour, IHandInteractable, I_ItemReceiver
 
         GameObject heldObject = hand.GetHeldObject();
 
-        if (heldObject == null ||
-            heldObject.GetComponentInParent<Ingredient>() == null)
+        if (heldObject == null)
+            return "Needs ingredient";
+
+        Ingredient ingredient = heldObject.GetComponentInParent<Ingredient>();
+        if (ingredient == null || ingredient.ingredient == null)
             return "Needs ingredient";
 
         return "Release to analyze";

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Fire Breathing Potion
-  prefab: {fileID: 6310475059916075538, guid: 55b6419898344914883a35d47c475f3e, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 7f17f67d0711eaa46b829c51aba0b15e, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: af0c81fc00d01fb4095c047d03920b83, type: 2}
     quantity: 2

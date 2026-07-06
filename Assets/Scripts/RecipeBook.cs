@@ -98,7 +98,6 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
 
     public void CloseBook()
     {
-        Cursor.visible = false;
         if (!isOpen || isMoving)
             return;
 

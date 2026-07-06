@@ -2,15 +2,17 @@ Shader "Custom/Multi Light Cel Shader"
 {
     Properties
     {
-        _BaseMap ("Base Texture", 2D) = "white" {}
-        _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
+        [MainTexture][NoScaleOffset] _BaseMap ("Base Texture", 2D) = "white" {}
+        [MainColor] _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
         _ShadowColor ("Shadow Color", Color) = (0.35, 0.35, 0.4, 1)
 
         _ShadowThreshold ("Shadow Threshold", Range(0, 1)) = 0.45
         _ShadowSmoothness ("Shadow Smoothness", Range(0.001, 0.5)) = 0.04
 
         _AmbientStrength ("Ambient Strength", Range(0, 1)) = 0.25
-        _LightIntensity ("Light Intensity", Range(0, 4)) = 1.0
+        _LightIntensity ("Overall Light Intensity", Range(0, 4)) = 1.0
+        _DirectionalLightIntensity ("Directional Light Intensity", Range(0, 4)) = 1.0
+        _AdditionalLightIntensity ("Additional Light Intensity", Range(0, 4)) = 1.0
         _LightFalloff ("Light Falloff", Range(0.1,8)) = 2
 
         _RimColor ("Rim Color", Color) = (0.6, 0.8, 1.0, 1)
@@ -65,11 +67,10 @@ Shader "Custom/Multi Light Cel Shader"
                 float3 positionWS : TEXCOORD0;
                 float3 normalWS : TEXCOORD1;
                 float3 viewDirectionWS : TEXCOORD2;
-                float2 uv : TEXCOORD3;
+                float2 baseUV : TEXCOORD3;
             };
 
             CBUFFER_START(UnityPerMaterial)
-                float4 _BaseMap_ST;
                 float4 _BaseColor;
                 float4 _ShadowColor;
 
@@ -78,6 +79,8 @@ Shader "Custom/Multi Light Cel Shader"
 
                 float _AmbientStrength;
                 float _LightIntensity;
+                float _DirectionalLightIntensity;
+                float _AdditionalLightIntensity;
                 float _LightFalloff;
 
                 float4 _RimColor;
@@ -98,7 +101,7 @@ Shader "Custom/Multi Light Cel Shader"
                 output.positionWS = positionInputs.positionWS;
                 output.normalWS = normalize(normalInputs.normalWS);
                 output.viewDirectionWS = GetWorldSpaceNormalizeViewDir(positionInputs.positionWS);
-                output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
+                output.baseUV = input.uv;
 
                 return output;
             }
@@ -119,7 +122,7 @@ Shader "Custom/Multi Light Cel Shader"
                 float ndotl = dot(normalWS, normalize(light.direction));
                 float band = GetCelBand(ndotl);
 
-                float attenuation = pow(light.distanceAttenuation, _LightFalloff);
+                float attenuation = pow(saturate(light.distanceAttenuation), _LightFalloff);
                 attenuation *= light.shadowAttenuation;
 
                 return light.color * band * attenuation;
@@ -130,13 +133,14 @@ Shader "Custom/Multi Light Cel Shader"
                 float3 normalWS = normalize(input.normalWS);
                 float3 viewDirWS = normalize(input.viewDirectionWS);
 
-                float4 baseTex = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv);
+                float2 baseUV = saturate(input.baseUV);
+                float4 baseTex = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, baseUV);
                 float3 baseColor = _BaseColor.rgb * baseTex.rgb;
 
                 float3 totalLight = 0;
 
                 Light mainLight = GetMainLight();
-                totalLight += CalculateCelLight(normalWS, mainLight);
+                totalLight += CalculateCelLight(normalWS, mainLight) * _DirectionalLightIntensity;
 
                 float fresnelPower = 1.0 / max(_RimSize, 0.001);
                 float fresnel = pow(1.0 - saturate(dot(normalWS, viewDirWS)), fresnelPower);
@@ -171,7 +175,7 @@ Shader "Custom/Multi Light Cel Shader"
                         UNITY_LOOP for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
                         {
                             Light light = GetAdditionalLight(lightIndex, input.positionWS, half4(1,1,1,1));
-                            totalLight += CalculateCelLight(normalWS, light);
+                            totalLight += CalculateCelLight(normalWS, light) * _AdditionalLightIntensity;
                         }
                     #endif
 
@@ -179,7 +183,7 @@ Shader "Custom/Multi Light Cel Shader"
 
                     LIGHT_LOOP_BEGIN(additionalLightCount)
                         Light light = GetAdditionalLight(lightIndex, input.positionWS, half4(1,1,1,1));
-                        totalLight += CalculateCelLight(normalWS, light);
+                        totalLight += CalculateCelLight(normalWS, light) * _AdditionalLightIntensity;
                     LIGHT_LOOP_END
 
                 #endif

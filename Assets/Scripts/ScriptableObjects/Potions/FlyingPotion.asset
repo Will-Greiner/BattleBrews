@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Flying Potion
-  prefab: {fileID: 6310475059916075538, guid: 6f575624da70be746a3a7c87e08c3dcc, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 334edfc52ee79c6448d3a86e36fbdde0, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 635a38dc18f13c345a374e72380a7bdf, type: 2}
     quantity: 2

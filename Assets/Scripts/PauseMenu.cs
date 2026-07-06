@@ -17,10 +17,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused){
-                Cursor.visible = true;
+            if (isPaused)
                 Resume();
-            }
             else
                 Pause();
         }
@@ -28,7 +26,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        Cursor.visible = true;
         isPaused = true;
         pauseMenuUI.SetActive(true);
 
@@ -40,7 +37,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        Cursor.visible = false;
         isPaused = false;
         pauseMenuUI.SetActive(false);
 

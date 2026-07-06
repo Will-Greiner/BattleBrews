@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Cute Potion
-  prefab: {fileID: 6310475059916075538, guid: b76fe2e8127485f48beb93e15263a3d5, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 17f258a46d568f44bbfd411c5fbc08fa, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 014d496ef9e5faf47b593e6f93e20104, type: 2}
     quantity: 10

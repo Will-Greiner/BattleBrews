@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Foresight Potion
-  prefab: {fileID: 6310475059916075538, guid: d64cc1dde84b17542b5497f5e082e8b1, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 6a66128032fc0804086cb83a02bef543, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 014d496ef9e5faf47b593e6f93e20104, type: 2}
     quantity: 5

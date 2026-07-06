@@ -13,8 +13,8 @@ public class HandLogic : MonoBehaviour
     private Vector3 handVelocity;
     [SerializeField] private float throwMultiplier = 0.3f;
     [SerializeField] private float maxThrowSpeed = 10f;
-    [SerializeField] Animator animator;
-
+    [SerializeField] private Animator animator;
+    
     [Space]
     [Header("Camera Rotation Settings")]
     [SerializeField] private float rotationSpeed = 5f;
@@ -34,6 +34,7 @@ public class HandLogic : MonoBehaviour
     public Transform grabPoint;
     [SerializeField] private LayerMask layerToIgnore;
     private PotionDelivery currentDeliveryZone;
+    private I_ItemReceiver currentItemReceiver;
 
     [SerializeField] private string heldItemLayerName = "HeldItem";
 
@@ -57,7 +58,6 @@ public class HandLogic : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponentInChildren<Animator>();
         currentDistance = defaultDistanceFromCamera;
         lastPosition = transform.position;
 
@@ -89,7 +89,9 @@ public class HandLogic : MonoBehaviour
         {
             if (isHolding)
             {
-                if (currentDeliveryZone != null)
+                if (currentItemReceiver != null && currentItemReceiver.CanReceiveItem(this))
+                    currentItemReceiver.ReceiveItem(this);
+                else if (currentDeliveryZone != null)
                     currentDeliveryZone.Deliver(this);
                 else
                     DropHeldObject();
@@ -193,6 +195,7 @@ public class HandLogic : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, ~layerToIgnore))
         {
             IHandInteractable interactable = hit.collider.GetComponentInParent<IHandInteractable>();
+
             if (interactable != null)
             {
                 interactable.Interact(this);
@@ -208,13 +211,16 @@ public class HandLogic : MonoBehaviour
         if (isHolding)
             return;
 
+        animator.SetBool("isHolding", true);
+
         heldObject = Instantiate(prefab, grabPoint);
         heldObject.transform.localPosition = Vector3.zero;
         heldObject.transform.localRotation = Quaternion.identity;
-        animator.SetBool("Holding", true);
+
         // Change item to correct layer
         originalHeldLayer = heldObject.layer;
         SetLayerRecursively(heldObject, heldItemLayer);
+
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -228,9 +234,11 @@ public class HandLogic : MonoBehaviour
         if (!isHolding)
             return;
 
+        animator.SetBool("isHolding", false);
+
         GameObject droppedObject = heldObject;
         heldObject = null;
-        animator.SetBool("Holding", false);
+
         droppedObject.transform.parent = null;
         SetLayerRecursively(droppedObject, originalHeldLayer);
 
@@ -254,7 +262,7 @@ public class HandLogic : MonoBehaviour
             return;
 
         heldObject = objectToPickUp;
-        animator.SetBool("Holding", true);
+
         heldObject.transform.SetParent(grabPoint);
         heldObject.transform.localPosition = Vector3.zero;
         heldObject.transform.localRotation = Quaternion.identity;
@@ -300,6 +308,19 @@ public class HandLogic : MonoBehaviour
         }
     }
 
+    public void EnterItemReceiverZone(I_ItemReceiver itemReceiver)
+    {
+        currentItemReceiver = itemReceiver;
+    }
+
+    public void ExitItemReceiverZone(I_ItemReceiver itemReceiver)
+    {
+        if (currentItemReceiver == itemReceiver)
+        {
+            currentItemReceiver = null;
+        }
+    }
+
     private void SetLayerRecursively(GameObject obj, int layer)
     {
         obj.layer = layer;
@@ -326,5 +347,8 @@ public class HandLogic : MonoBehaviour
 
         lastPosition = transform.position;
         handVelocity = Vector3.zero;
+
+        currentDeliveryZone = null;
+        currentItemReceiver = null;
     }
 }

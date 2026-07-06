@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Dr. Pepper
-  prefab: {fileID: 6310475059916075538, guid: 939b28a51e712c04ab737744703efb6f, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 65ae072b692b27645a3ccd1858fb47d1, type: 3}
   requiredIngredients:
-  - ingredient: {fileID: 11400000, guid: 11f6c6f6c2f55ad4bbb26d6beeefb941, type: 2}
+  - ingredient: {fileID: 11400000, guid: e56775d8a0039ec45a43d0f46c28e8ef, type: 2}
     quantity: 2
   - ingredient: {fileID: 11400000, guid: d9d85dff3dacd394caf1574fa889d329, type: 2}
     quantity: 5

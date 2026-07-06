@@ -33,30 +33,28 @@ public class HeldItemInputZone : MonoBehaviour
             return;
 
         ShowPrompt(receiver.GetPrompt(hand));
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (receiver.CanReceiveItem(hand))
-                receiver.ReceiveItem(hand);
-
-            HidePrompt();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponentInParent<HandLogic>() == null)
+        HandLogic hand = other.GetComponentInParent<HandLogic>();
+
+        if (hand == null)
             return;
 
         handInside = true;
+        hand.EnterItemReceiverZone(receiver);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponentInParent<HandLogic>() == null)
+        HandLogic hand = other.GetComponentInParent<HandLogic>();
+
+        if (hand == null)
             return;
 
         handInside = false;
+        hand.ExitItemReceiverZone(receiver);
         HidePrompt();
     }
 

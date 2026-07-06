@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Gross Potion
-  prefab: {fileID: 6310475059916075538, guid: 46072bcab9654514b9abd94acc5f89d3, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: c819345dae3f0b747ad1d0c392a7a5ae, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: d9d85dff3dacd394caf1574fa889d329, type: 2}
     quantity: 7

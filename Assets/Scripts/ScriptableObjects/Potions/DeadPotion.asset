@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Dead Potion
-  prefab: {fileID: 6310475059916075538, guid: bee30773bfc218842999a3ccebce135c, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: d103c2f3b2854c944b7646a6d7e7d3ed, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 64cb40fd41e4b124fa48826b0ac793b7, type: 2}
     quantity: 12

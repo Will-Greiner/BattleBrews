@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Charisma Potion
-  prefab: {fileID: 6310475059916075538, guid: 5d772d4f3fd5e21458b119e06d144340, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 38947c502ddf5b54c8b11af20c4936b6, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 6116000616bf08e4dac4a54a6144dffd, type: 2}
     quantity: 4
   - ingredient: {fileID: 11400000, guid: 128c2e35ce1c1b146a1164af2e34d18f, type: 2}
     quantity: 6
-  isDiscovered: 0
+  isDiscovered: 1

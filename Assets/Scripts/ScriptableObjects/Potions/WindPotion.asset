@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Wind Potion
-  prefab: {fileID: 6310475059916075538, guid: d7ba772d63932ba4fad185ddbc9e788e, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 621b83bcfd06fe245ae1d2f1d9f05278, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 635a38dc18f13c345a374e72380a7bdf, type: 2}
     quantity: 2

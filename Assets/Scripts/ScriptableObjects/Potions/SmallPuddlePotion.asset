@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Small Puddle Potion
-  prefab: {fileID: 6310475059916075538, guid: 30eb46175a1f26a4391f4ca7f655870f, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 9720d89a156592043b8f2c617b736437, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 50cb1a458d67d204692589d44737f29b, type: 2}
     quantity: 6

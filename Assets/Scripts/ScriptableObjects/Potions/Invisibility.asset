@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   icon: {fileID: 0}
   potionName: Invisibility Potion
-  prefab: {fileID: 6310475059916075538, guid: 5065b6d9f82ae2d40b454757352c3007, type: 3}
+  prefab: {fileID: 3526320236207850986, guid: 6c9862bed0cc6914681b7c9bd29ca896, type: 3}
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 014d496ef9e5faf47b593e6f93e20104, type: 2}
     quantity: 5
-  - ingredient: {fileID: 11400000, guid: af0c81fc00d01fb4095c047d03920b83, type: 2}
+  - ingredient: {fileID: 11400000, guid: efbb4753bb2f8424fa3db55c2de1c266, type: 2}
     quantity: 3
   - ingredient: {fileID: 11400000, guid: 64cb40fd41e4b124fa48826b0ac793b7, type: 2}
     quantity: 2
