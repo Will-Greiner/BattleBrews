@@ -83,6 +83,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 158504996594833546}
     m_Modifications:
     - target: {fileID: -9121444377532122776, guid: 71bc801ef58972743b833b3c54bb1e67, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -9121444377532122776, guid: 71bc801ef58972743b833b3c54bb1e67, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a001cb4b4aa432d42a97b08a0cace5e5, type: 2}
@@ -127,9 +131,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6032673869979491822, guid: 71bc801ef58972743b833b3c54bb1e67, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6032673869979491822, guid: 71bc801ef58972743b833b3c54bb1e67, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a001cb4b4aa432d42a97b08a0cace5e5, type: 2}
+    - target: {fileID: -3877546402171501823, guid: 71bc801ef58972743b833b3c54bb1e67, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -3877546402171501823, guid: 71bc801ef58972743b833b3c54bb1e67, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -137,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 71bc801ef58972743b833b3c54bb1e67, type: 3}
       propertyPath: m_Name
       value: Unicorn Blood (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353107753655262961, guid: 71bc801ef58972743b833b3c54bb1e67, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

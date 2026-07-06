@@ -127,9 +127,17 @@ PrefabInstance:
       value: Rat
       objectReference: {fileID: 0}
     - target: {fileID: 2803436535603912181, guid: 1ae4ef47103e8d744914a15e922ccb8a, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803436535603912181, guid: 1ae4ef47103e8d744914a15e922ccb8a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a001cb4b4aa432d42a97b08a0cace5e5, type: 2}
+    - target: {fileID: 8231205789296572475, guid: 1ae4ef47103e8d744914a15e922ccb8a, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8231205789296572475, guid: 1ae4ef47103e8d744914a15e922ccb8a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

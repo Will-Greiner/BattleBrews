@@ -123,9 +123,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2733818618462414217, guid: 2f83581aca16e8c45b33fc82b0f89b6e, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2733818618462414217, guid: 2f83581aca16e8c45b33fc82b0f89b6e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 78d31ba31a7bf0743b1c2fea0014179b, type: 2}
+    - target: {fileID: -662432247990482855, guid: 2f83581aca16e8c45b33fc82b0f89b6e, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -662432247990482855, guid: 2f83581aca16e8c45b33fc82b0f89b6e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -133,6 +141,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2f83581aca16e8c45b33fc82b0f89b6e, type: 3}
       propertyPath: m_Name
       value: Monkey Heart (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279095331347438348, guid: 2f83581aca16e8c45b33fc82b0f89b6e, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5279095331347438348, guid: 2f83581aca16e8c45b33fc82b0f89b6e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

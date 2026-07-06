@@ -123,17 +123,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6287226097715749836, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6287226097715749836, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 92f75ef120473834788dd5ee669bc9bf, type: 2}
+    - target: {fileID: -1510483362189910248, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -1510483362189910248, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 92f75ef120473834788dd5ee669bc9bf, type: 2}
     - target: {fileID: -314145166362793285, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -314145166362793285, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 92f75ef120473834788dd5ee669bc9bf, type: 2}
+    - target: {fileID: -138105302427175342, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -138105302427175342, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -141,6 +157,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
       propertyPath: m_Name
       value: Sandal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074622914909160897, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1074622914909160897, guid: d903d0729dff6d548b858772ab2196c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

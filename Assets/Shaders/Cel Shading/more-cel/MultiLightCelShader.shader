@@ -46,6 +46,7 @@ Shader "Custom/Multi Light Cel Shader"
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile _ _CLUSTER_LIGHT_LOOP
+            #pragma multi_compile _ _LIGHT_LAYERS // Added Light Layers macro
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
@@ -117,8 +118,12 @@ Shader "Custom/Multi Light Cel Shader"
                 );
             }
 
-            float3 CalculateCelLight(float3 normalWS, Light light)
+            // Added meshRenderingLayers parameter and culling check
+            float3 CalculateCelLight(float3 normalWS, Light light, uint meshRenderingLayers)
             {
+                if (!IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+                    return float3(0, 0, 0);
+
                 float ndotl = dot(normalWS, normalize(light.direction));
                 float band = GetCelBand(ndotl);
 
@@ -139,8 +144,12 @@ Shader "Custom/Multi Light Cel Shader"
 
                 float3 totalLight = 0;
 
+                // Fetch the rendering layers for this specific mesh
+                uint meshRenderingLayers = GetMeshRenderingLayer();
+
                 Light mainLight = GetMainLight();
-                totalLight += CalculateCelLight(normalWS, mainLight) * _DirectionalLightIntensity;
+                // Pass layers into main light calc
+                totalLight += CalculateCelLight(normalWS, mainLight, meshRenderingLayers) * _DirectionalLightIntensity;
 
                 float fresnelPower = 1.0 / max(_RimSize, 0.001);
                 float fresnel = pow(1.0 - saturate(dot(normalWS, viewDirWS)), fresnelPower);
@@ -175,7 +184,8 @@ Shader "Custom/Multi Light Cel Shader"
                         UNITY_LOOP for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
                         {
                             Light light = GetAdditionalLight(lightIndex, input.positionWS, half4(1,1,1,1));
-                            totalLight += CalculateCelLight(normalWS, light) * _AdditionalLightIntensity;
+                            // Pass layers into clustered lights calc
+                            totalLight += CalculateCelLight(normalWS, light, meshRenderingLayers) * _AdditionalLightIntensity;
                         }
                     #endif
 
@@ -183,7 +193,8 @@ Shader "Custom/Multi Light Cel Shader"
 
                     LIGHT_LOOP_BEGIN(additionalLightCount)
                         Light light = GetAdditionalLight(lightIndex, input.positionWS, half4(1,1,1,1));
-                        totalLight += CalculateCelLight(normalWS, light) * _AdditionalLightIntensity;
+                        // Pass layers into standard additional lights calc
+                        totalLight += CalculateCelLight(normalWS, light, meshRenderingLayers) * _AdditionalLightIntensity;
                     LIGHT_LOOP_END
 
                 #endif

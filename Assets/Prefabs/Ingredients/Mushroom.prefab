@@ -127,9 +127,17 @@ PrefabInstance:
       value: Mushroom
       objectReference: {fileID: 0}
     - target: {fileID: 4726612649484175103, guid: 6eafcf515b738014abe7b304bd086e08, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726612649484175103, guid: 6eafcf515b738014abe7b304bd086e08, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 92f75ef120473834788dd5ee669bc9bf, type: 2}
+    - target: {fileID: 7485459509213105829, guid: 6eafcf515b738014abe7b304bd086e08, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7485459509213105829, guid: 6eafcf515b738014abe7b304bd086e08, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

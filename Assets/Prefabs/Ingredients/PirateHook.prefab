@@ -123,6 +123,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1400085464352517348, guid: 175dd563afec2044c850ef50a409e7fb, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1400085464352517348, guid: 175dd563afec2044c850ef50a409e7fb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 92f75ef120473834788dd5ee669bc9bf, type: 2}
@@ -131,9 +135,17 @@ PrefabInstance:
       value: Pirate Hook (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1202777218657033929, guid: 175dd563afec2044c850ef50a409e7fb, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202777218657033929, guid: 175dd563afec2044c850ef50a409e7fb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 92f75ef120473834788dd5ee669bc9bf, type: 2}
+    - target: {fileID: 4323837609899350723, guid: 175dd563afec2044c850ef50a409e7fb, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4323837609899350723, guid: 175dd563afec2044c850ef50a409e7fb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

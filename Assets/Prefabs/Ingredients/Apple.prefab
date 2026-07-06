@@ -123,9 +123,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4982249516211480865, guid: 64bc0d2059765c14e84ba325fa54ccd0, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4982249516211480865, guid: 64bc0d2059765c14e84ba325fa54ccd0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 78d31ba31a7bf0743b1c2fea0014179b, type: 2}
+    - target: {fileID: -4283352998509803505, guid: 64bc0d2059765c14e84ba325fa54ccd0, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 64bc0d2059765c14e84ba325fa54ccd0, type: 3}
       propertyPath: m_Name
       value: Apple (1)

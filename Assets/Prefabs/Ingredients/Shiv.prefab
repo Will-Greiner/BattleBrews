@@ -123,6 +123,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8532172584448871376, guid: 5b97c61266f55a9448a40172a83b6fb4, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8532172584448871376, guid: 5b97c61266f55a9448a40172a83b6fb4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a001cb4b4aa432d42a97b08a0cace5e5, type: 2}
@@ -131,9 +135,17 @@ PrefabInstance:
       value: Shiv (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5391900707453442821, guid: 5b97c61266f55a9448a40172a83b6fb4, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391900707453442821, guid: 5b97c61266f55a9448a40172a83b6fb4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a001cb4b4aa432d42a97b08a0cace5e5, type: 2}
+    - target: {fileID: 8084854973141751649, guid: 5b97c61266f55a9448a40172a83b6fb4, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8084854973141751649, guid: 5b97c61266f55a9448a40172a83b6fb4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
