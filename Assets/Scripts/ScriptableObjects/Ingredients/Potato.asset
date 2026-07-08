@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f82944f55ddca742839d9149a0957ed, type: 3}
   m_Name: Potato
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 08686542a83dd5f4e81315b0655a0d01, type: 3}
   itemName: 
   prefab: {fileID: 799595071676153098, guid: 37b44818ec456864a81c42e39c3d24f5, type: 3}
   cookedPrefab: {fileID: 8523907007946626545, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}

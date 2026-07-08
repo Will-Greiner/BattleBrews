@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f82944f55ddca742839d9149a0957ed, type: 3}
   m_Name: Rat
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: efa27dc285bbc8f419544cee4cc091f9, type: 3}
   itemName: 
   prefab: {fileID: 872604541493608801, guid: f46470f8860764a48a7163a3afe40000, type: 3}
   cookedPrefab: {fileID: 8523907007946626545, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}

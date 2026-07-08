@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f82944f55ddca742839d9149a0957ed, type: 3}
   m_Name: PirateHook
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2955e44198d3e9b418009450a2519869, type: 3}
   itemName: 
   prefab: {fileID: 8094531478104536429, guid: ebb3144959cc72a4eb65bcce74629f17, type: 3}
   cookedPrefab: {fileID: 8523907007946626545, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}

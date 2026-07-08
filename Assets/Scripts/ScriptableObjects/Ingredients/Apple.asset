@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f82944f55ddca742839d9149a0957ed, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 469f55d68c763eb459bc605324da0759, type: 3}
   itemName: 
   prefab: {fileID: 5740551100710034288, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}
   cookedPrefab: {fileID: 0}

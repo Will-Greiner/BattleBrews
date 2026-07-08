@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f82944f55ddca742839d9149a0957ed, type: 3}
   m_Name: Strawberry
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableItem
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f92cebc99a5813c458eb1971c1029b68, type: 3}
   itemName: 
   prefab: {fileID: 7034944104211172938, guid: 0607bf337466ae642852e81f04e73c72, type: 3}
   cookedPrefab: {fileID: 8523907007946626545, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}
