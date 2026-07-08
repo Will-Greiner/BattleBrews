@@ -69,7 +69,7 @@ public class TimeManager : MonoBehaviour
             timerRunning = false;
 
             // Handle timer running out
-            OutcomeManager.Instance.DetermineFighterFate(Outcome.Worst);
+            OutcomeManager.Instance.TimeExpired();
 
             return;
         }

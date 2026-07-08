@@ -1,31 +1,40 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 
 public enum Outcome {Best, Mid, Worst};
+public enum GameState {MainMenu, RoundStarting, RoundActive, RoundResolving, GameOver}
 
 public class OutcomeManager : MonoBehaviour
 {
     public static OutcomeManager Instance {get; private set;}
 
+    [Header("Game")]
     [SerializeField] BossScenario[] allScenarios;
-    [SerializeField] int lives = 3;
+    [SerializeField] int startingLives = 3;
+    [SerializeField] float roundResultDelay = 2f;
+
+    [Header("UI")]
+    [SerializeField] TMP_Text roundText;
+    [SerializeField] GameObject gameOverScreen;
 
     private readonly List<BossScenario> possibleScenarios = new();
 
     private BossScenario currentScenario;
     private PotionData requestedPotion;
     private int currentRound = 1;
-    [SerializeField] TMP_Text roundText;
+    private int lives;
+
+    private GameState state = GameState.MainMenu;
 
     public BossScenario CurrentScenario => currentScenario;
     public PotionData RequestedPotion => requestedPotion;
     public int CurrentRound => currentRound;
     public int Lives => lives;
-
-    private bool gameStarted = false;
+    public GameState State => state;
 
     private void Awake()
     {
@@ -40,32 +49,49 @@ public class OutcomeManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        ShowMainMenu();
+    }
+
+    public void ShowMainMenu()
+    {
+        state = GameState.MainMenu;
+
+        currentRound = 0;
+        lives = startingLives;
+        currentScenario = null;
+        requestedPotion = null;
+
+        TimeManager.Instance.HideClock();
+        CharacterManager.Instance.ClearCharacter();
+        PotionRequestUI.Instance.HidePotionRequest();
+
+        if (gameOverScreen != null)
+            gameOverScreen.SetActive(false);
+    }
+
     public void StartGame()
     {
-        if (gameStarted)
+        if (state != GameState.MainMenu && state != GameState.GameOver)
             return;
 
-        gameStarted = true;
         currentRound = 1;
+        lives = startingLives;
+
+        if (gameOverScreen != null)
+            gameOverScreen.SetActive(false);
+
         TimeManager.Instance.ShowClock();
 
         StartRound();
     }
 
-    public void ResetGame()
-    {
-        currentRound = 1;
-        lives = 3;
-        currentScenario = null;
-
-        CharacterManager.Instance.ClearCharacter();
-
-        PotionRequestUI.Instance.HidePotionRequest();
-    }
-
     private void StartRound()
     {
-        roundText.text = "Round: " + currentRound.ToString();
+        state = GameState.RoundStarting;
+
+        UpdateUI();
 
         SelectScenario();
         SelectRequestedPotion();
@@ -75,6 +101,66 @@ public class OutcomeManager : MonoBehaviour
         PotionRequestUI.Instance.ShowPotionRequest(currentScenario.bossName, requestedPotion.potionName, requestedPotion.icon);
     
         TimeManager.Instance.StartTimer(currentRound);
+
+        state = GameState.RoundActive;
+    }
+
+    public void SubmitPotion(PotionData potion)
+    {
+        if (state != GameState.RoundActive)
+            return;
+
+        Outcome outcome = EvaluateOutcome(potion);
+        ResolveRound(outcome, potion);
+    }
+
+    public void TimeExpired()
+    {
+        if (state != GameState.RoundActive)
+            return;
+
+        state = GameState.RoundResolving;
+
+        TimeManager.Instance.PauseTimer();
+
+        lives--;
+
+        UpdateUI();
+
+        RoundReportUI.Instance.ShowTimeoutReport(currentScenario.bossName, requestedPotion.potionName);
+    }
+
+    private void ResolveRound(Outcome outcome, PotionData givenPotion = null)
+    {
+        if (state != GameState.RoundActive)
+            return;
+
+        state = GameState.RoundResolving;
+
+        TimeManager.Instance.PauseTimer();
+
+        if (outcome == Outcome.Worst)
+            lives--;
+
+        UpdateUI();
+
+        string givenPotionName = givenPotion != null ? givenPotion.potionName : "None";
+
+        RoundReportUI.Instance.ShowReport(outcome, currentScenario.bossName, requestedPotion.potionName, givenPotionName);
+    }
+
+    private void EndGame()
+    {
+        state = GameState.GameOver;
+
+        TimeManager.Instance.StopTimer();
+        TimeManager.Instance.HideClock();
+
+        CharacterManager.Instance.ClearCharacter();
+        PotionRequestUI.Instance.HidePotionRequest();
+
+        if (gameOverScreen != null)
+            gameOverScreen.SetActive(true);
     }
 
     private void SelectScenario()
@@ -130,22 +216,6 @@ public class OutcomeManager : MonoBehaviour
         return Random.value < 0.5f ? Outcome.Best : Outcome.Worst;
     }
 
-    public void DetermineFighterFate(Outcome currentOutcome)
-    {
-        if (currentOutcome == Outcome.Worst)
-        {
-            lives--;
-
-            if (lives <= 0)
-            {
-                Debug.Log("You Gamed Over");
-                return;
-            }
-        }
-
-        IncrementRound();
-    }
-
     private BossScenario GetRandomScenario()
     {
         if (possibleScenarios == null || possibleScenarios.Count == 0)
@@ -156,5 +226,26 @@ public class OutcomeManager : MonoBehaviour
 
         int randomIndex = Random.Range(0, possibleScenarios.Count);
         return possibleScenarios[randomIndex];
+    }
+
+    private void UpdateUI()
+    {
+        if (roundText != null)
+            roundText.text = "Round: " + currentRound;
+    }
+
+    public void ContinueAfterReport()
+    {
+        if (state != GameState.RoundResolving)
+            return;
+
+        if (lives <= 0)
+        {
+            EndGame();
+            return;
+        }
+
+        currentRound++;
+        StartRound();
     }
 }

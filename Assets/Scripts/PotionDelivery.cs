@@ -17,12 +17,15 @@ public class PotionDelivery : MonoBehaviour
         if (!hand.isHolding)
             return;
 
+        if (OutcomeManager.Instance.State != GameState.RoundActive)
+            return;
+
         Potion potion = hand.GetHeldObject().GetComponent<Potion>();
 
         if (potion == null)
             return;
 
-        OutcomeManager.Instance.DetermineFighterFate(OutcomeManager.Instance.EvaluateOutcome(potion.potionData));
+        OutcomeManager.Instance.SubmitPotion(potion.potionData);
 
         hand.ClearHeldObject();
     }

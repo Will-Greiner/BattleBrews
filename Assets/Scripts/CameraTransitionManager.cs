@@ -132,7 +132,7 @@ public class CameraTransitionManager : MonoBehaviour
 
         ResetGameplayCamera();
 
-        OutcomeManager.Instance.ResetGame();
+        OutcomeManager.Instance.ShowMainMenu();
 
         menuCamera.enabled = true;
         gameplayCamera.enabled = false;
