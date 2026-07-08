@@ -102,7 +102,7 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
             return;
 
         isOpen = false;
-
+        Cursor.visible = false;
         bookUI.SetActive(false);
 
         if (HandLogic.Instance != null)

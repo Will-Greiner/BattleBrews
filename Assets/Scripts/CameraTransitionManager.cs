@@ -36,6 +36,7 @@ public class CameraTransitionManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         ShowMainMenuInstant();
     }
 
@@ -81,6 +82,7 @@ public class CameraTransitionManager : MonoBehaviour
     {
         LockGameplayInput(true);
 
+        Cursor.visible = false;
         menuCamera.enabled = true;
         gameplayCamera.enabled = false;
 
@@ -114,7 +116,6 @@ public class CameraTransitionManager : MonoBehaviour
     private IEnumerator ReturnToMainMenuRoutine()
     {
         LockGameplayInput(true);
-
         menuCamera.enabled = true;
         gameplayCamera.enabled = false;
 
@@ -143,7 +144,7 @@ public class CameraTransitionManager : MonoBehaviour
     private IEnumerator FocusOnTargetRoutine(Transform target)
     {
         LockGameplayInput(true);
-
+        Cursor.visible = true;
         focusReturnPosition = gameplayCamera.transform.position;
         focusReturnRotation = gameplayCamera.transform.rotation;
         isInFocusView = true;
@@ -170,6 +171,7 @@ public class CameraTransitionManager : MonoBehaviour
     {
         LockGameplayInput(true);
 
+        Cursor.visible = false;
         menuCamera.enabled = true;
         gameplayCamera.enabled = false;
 
@@ -253,5 +255,12 @@ public class CameraTransitionManager : MonoBehaviour
     {
         if (handLogic != null)
             handLogic.inputLocked = locked;
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }

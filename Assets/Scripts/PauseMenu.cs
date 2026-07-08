@@ -13,19 +13,37 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
     }
 
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isPaused)
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Q))
+        {if (isPaused)
+            {
                 Resume();
+                Cursor.visible = false;
+            }
             else
                 Pause();
         }
+        #else
+            if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                Resume();
+                Cursor.visible = false;
+            }
+            else
+                Pause();
+            
+        }
+        #endif
     }
 
     public void Pause()
     {
+        Cursor.visible = true;
         isPaused = true;
         pauseMenuUI.SetActive(true);
 
@@ -37,6 +55,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        Cursor.visible = false;
         isPaused = false;
         pauseMenuUI.SetActive(false);
 
@@ -48,6 +67,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        Cursor.visible = true;
         isPaused = false;
         pauseMenuUI.SetActive(false);
 
