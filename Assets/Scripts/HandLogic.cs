@@ -142,7 +142,7 @@ public class HandLogic : MonoBehaviour
 if (euler.y > 180f)
     euler.y -= 360f;
 
-euler.y = Mathf.Clamp(euler.y, -50f, 30f);
+euler.y = Mathf.Clamp(euler.y, -10f, 10f);
 
 transform.localRotation = Quaternion.Euler(euler);
 
@@ -244,7 +244,7 @@ transform.localRotation = Quaternion.Euler(euler);
         if (!isHolding)
             return;
 
-        animator.SetBool("isHolding", true);
+        animator.SetBool("isHolding", false);
 
         GameObject droppedObject = heldObject;
         heldObject = null;
