@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.35
 --- !u!65 &6118541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.6
+  handDistance: 2.25
 --- !u!65 &24580661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5255,7 +5255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.6
+  handDistance: 2.4
 --- !u!65 &303872644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8622,7 +8622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.4
+  handDistance: 2.23
 --- !u!65 &460884647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10675,7 +10675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.55
 --- !u!65 &595152128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15188,7 +15188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.3
+  handDistance: 2.05
 --- !u!65 &952245050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15911,7 +15911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.05
+  handDistance: 1.98
 --- !u!1 &984843200
 GameObject:
   m_ObjectHideFlags: 0
@@ -17586,7 +17586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.2
 --- !u!65 &1126733291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20651,7 +20651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.6
+  handDistance: 2.5
 --- !u!65 &1302404835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21578,7 +21578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2
+  handDistance: 2.015
 --- !u!1 &1355883053
 GameObject:
   m_ObjectHideFlags: 0
@@ -23844,7 +23844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.3
 --- !u!65 &1538648674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24049,7 +24049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2
+  handDistance: 1.75
 --- !u!4 &1562386027 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1359425947201764458, guid: 840a0962dfb6e3e48aab464823cccd57, type: 3}
@@ -24306,7 +24306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.2
+  handDistance: 2.25
 --- !u!65 &1567315494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25943,7 +25943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 1.9
+  handDistance: 2.08
 --- !u!1 &1703429206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 281855664364225751, guid: 1b919503a690ee44492d8d29bf48e3f9, type: 3}
@@ -28817,7 +28817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.05
+  handDistance: 1.98
 --- !u!114 &1904725033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29353,7 +29353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.18
 --- !u!65 &1937096429
 BoxCollider:
   m_ObjectHideFlags: 0

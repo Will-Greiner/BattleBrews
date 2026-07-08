@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.35
 --- !u!65 &6118541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.6
+  handDistance: 2.25
 --- !u!65 &24580661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4444,7 +4444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.6
+  handDistance: 2.4
 --- !u!65 &303872644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7756,7 +7756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.4
+  handDistance: 2.23
 --- !u!65 &460884647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9593,7 +9593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.55
 --- !u!65 &595152128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11819,7 +11819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.4
 --- !u!65 &821391176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14072,7 +14072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.3
+  handDistance: 2.05
 --- !u!65 &952245050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14689,7 +14689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.05
+  handDistance: 1.98
 --- !u!1 &984843200
 GameObject:
   m_ObjectHideFlags: 0
@@ -16238,7 +16238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.2
 --- !u!65 &1126733291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19003,7 +19003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.6
+  handDistance: 2.5
 --- !u!65 &1302404835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20053,7 +20053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2
+  handDistance: 2.015
 --- !u!1 &1355883053
 GameObject:
   m_ObjectHideFlags: 0
@@ -22169,7 +22169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.3
 --- !u!65 &1538648674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22347,8 +22347,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.015, y: 0.015, z: 0.008}
-  m_Center: {x: 2.3283064e-10, y: 0, z: 0.004}
+  m_Size: {x: 0.012072156, y: 0.013906442, z: 0.0074468353}
+  m_Center: {x: -0.0011914548, y: 0.0009074812, z: 0.003723426}
 --- !u!114 &1560706752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22374,7 +22374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2
+  handDistance: 1.75
 --- !u!4 &1562386027 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1359425947201764458, guid: 840a0962dfb6e3e48aab464823cccd57, type: 3}
@@ -22529,7 +22529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.2
+  handDistance: 2.25
 --- !u!65 &1567315494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24232,7 +24232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 1.9
+  handDistance: 2.08
 --- !u!1 &1703429206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 281855664364225751, guid: 1b919503a690ee44492d8d29bf48e3f9, type: 3}
@@ -26959,7 +26959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.05
+  handDistance: 1.98
 --- !u!114 &1904725033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27357,7 +27357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
-  handDistance: 2.5
+  handDistance: 2.18
 --- !u!65 &1937096429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28051,6 +28051,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 973070746}
     m_Modifications:
+    - target: {fileID: 6369755425022006468, guid: 9ee61f494166bc549b466be5011066a5, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146563017119602212, guid: 9ee61f494166bc549b466be5011066a5, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7456481918931355156, guid: 9ee61f494166bc549b466be5011066a5, type: 3}
       propertyPath: m_Name
       value: WaterBase
