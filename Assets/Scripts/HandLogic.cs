@@ -211,7 +211,7 @@ public class HandLogic : MonoBehaviour
         if (isHolding)
             return;
 
-        animator.SetBool("isHolding", true);
+        animator.SetBool("isHolding", false);
 
         heldObject = Instantiate(prefab, grabPoint);
         heldObject.transform.localPosition = Vector3.zero;
@@ -234,7 +234,7 @@ public class HandLogic : MonoBehaviour
         if (!isHolding)
             return;
 
-        animator.SetBool("isHolding", false);
+        animator.SetBool("isHolding", true);
 
         GameObject droppedObject = heldObject;
         heldObject = null;
