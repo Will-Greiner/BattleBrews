@@ -136,6 +136,16 @@ public class HandLogic : MonoBehaviour
 
         cameraEmpty.transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
 
+        Vector3 euler = cameraEmpty.transform.localEulerAngles;
+
+// Convert from 0-360 to -180-180
+if (euler.y > 180f)
+    euler.y -= 360f;
+
+euler.y = Mathf.Clamp(euler.y, -50f, 30f);
+
+transform.localRotation = Quaternion.Euler(euler);
+
         // if (mousePercent.x > 1f - rotationBarSize)
         // {
         //     targetY += rotationSpeed * Time.deltaTime;
@@ -208,11 +218,11 @@ public class HandLogic : MonoBehaviour
 
     public void HoldObject(GameObject prefab)
     {
+        
         if (isHolding)
             return;
 
-        animator.SetBool("isHolding", false);
-
+        animator.SetBool("isHolding", true);
         heldObject = Instantiate(prefab, grabPoint);
         heldObject.transform.localPosition = Vector3.zero;
         heldObject.transform.localRotation = Quaternion.identity;

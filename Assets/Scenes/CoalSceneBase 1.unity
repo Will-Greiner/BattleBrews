@@ -27000,6 +27000,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 8d8d59d3a30036144bd430e0eadaf8f6, type: 3}
+--- !u!114 &1791555319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791555312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38442d21510e81b4e9535f646e65134c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandDistanceZone
+  handDistance: 2
 --- !u!4 &1811412505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3964273819541686832, guid: 809e0f4aed6bcae4ab7fdc8b70a5e3a0, type: 3}
@@ -29661,6 +29674,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d8d59d3a30036144bd430e0eadaf8f6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1791555316}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d8d59d3a30036144bd430e0eadaf8f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1791555319}
   m_SourcePrefab: {fileID: 100100000, guid: 8d8d59d3a30036144bd430e0eadaf8f6, type: 3}
 --- !u!1001 &1953932006
 PrefabInstance:
@@ -31485,7 +31501,7 @@ MonoBehaviour:
   animator: {fileID: 76271391}
   rotationSpeed: 100
   rotationSmoothTime: 0.2
-  rotationBarSize: 0.25
+  rotationBarSize: 0.15
   cameraEmpty: {fileID: 1497007464}
   rotationAmount: 50
   interactDistance: 30

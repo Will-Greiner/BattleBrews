@@ -205,7 +205,6 @@ public class Cauldron : MonoBehaviour, IHandInteractable
         Ingredient ingredient = other.GetComponentInParent<Ingredient>();
 
         Vector3 entryObjectPos = other.transform.position;
-        Debug.Log(entryObjectPos);
         GameObject SplashEffect = Instantiate(splashPrefab, entryObjectPos, Quaternion.identity, waterLocation.transform);
         Destroy(SplashEffect, 0.52f);
 
