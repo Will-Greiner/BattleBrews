@@ -3626,7 +3626,7 @@ PrefabInstance:
     - target: {fileID: 7826428498470946623, guid: 29ac44394462fb349b22751c77fbbcd8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 728c90e91b3089a4fb8c4ddfafa34221, type: 2}
+      objectReference: {fileID: 2100000, guid: fd401d9987b188e469efde1109214159, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -11373,8 +11373,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 846f234ec6b93464880917bec2571471, type: 2}
   - {fileID: 11400000, guid: 40e3b838321d11e419dd6bd988fb93c2, type: 2}
   - {fileID: 11400000, guid: 727bf240abc24544c941535a04b3a276, type: 2}
-  lives: 3
+  startingLives: 3
+  roundResultDelay: 2
   roundText: {fileID: 1143567799}
+  gameOverScreen: {fileID: 0}
 --- !u!4 &788782607
 Transform:
   m_ObjectHideFlags: 0
@@ -14378,6 +14380,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cauldron
   allPossibleRecipes: {fileID: 11400000, guid: b61e0ce192e629549b8383f2f8bd0f6d, type: 2}
   potionSpawn: {fileID: 2005100210}
+  splashPrefab: {fileID: 0}
+  waterLocation: {fileID: 0}
   maxIngredientTypes: 3
   maxQuantityPerIngredient: 50
   uiRoot: {fileID: 1488769460}
