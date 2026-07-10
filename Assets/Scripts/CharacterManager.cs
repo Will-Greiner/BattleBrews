@@ -14,6 +14,8 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] Transform[] spawnTransforms;
     private List<GameObject> spawnedObjects = new List<GameObject>();
 
+    public FighterAnimationController CurrentFighter {get; private set;}
+
     private void Awake()
     {
         if (Instance == null)
@@ -36,13 +38,18 @@ public class CharacterManager : MonoBehaviour
             {
                 int randomIndex = Random.Range(0, allArrays[i].Length);
 
-                Instantiate(allArrays[i][randomIndex], spawnTransforms[i].position, spawnTransforms[i].rotation, spawnTransforms[i]);
+                GameObject spawned = Instantiate(allArrays[i][randomIndex], spawnTransforms[i].position, spawnTransforms[i].rotation, spawnTransforms[i]);
+            
+                if (CurrentFighter == null)
+                    CurrentFighter = spawned.GetComponentInParent<FighterAnimationController>();
             }
         }
     }
 
     public void ClearCharacter()
     {
+        CurrentFighter = null;
+
         // Remove character from scene
         for (int i = 0; i < spawnTransforms.Length; i++)
         {

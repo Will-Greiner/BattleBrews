@@ -16,10 +16,26 @@ public class RecipeBookEntry : MonoBehaviour
         potionIcon.sprite = potion.icon;
         potionName.text = potion.potionName;
 
+        foreach (Transform child in ingredientUIParent)
+            Destroy(child.gameObject);
+
         foreach (IngredientRequirement requirement in potion.requiredIngredients)
         {
-            GameObject ingredientUI = Instantiate(ingredientUIPrefab, ingredientUIParent);
-            ingredientUI.GetComponent<IngredientBookUI>().Setup(requirement, potion.isDiscovered);
+            GameObject ingredientUI = Instantiate(
+                ingredientUIPrefab,
+                ingredientUIParent
+            );
+
+            IngredientBookUI ingredientBookUI =
+                ingredientUI.GetComponent<IngredientBookUI>();
+
+            if (ingredientBookUI != null)
+            {
+                ingredientBookUI.Setup(
+                    requirement,
+                    potion.isDiscovered
+                );
+            }
         }
     }
 }

@@ -6,7 +6,9 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
     public static RecipeBook Instance { get; private set; }
 
     [SerializeField] RecipeDatabase allRecipes;
-    [SerializeField] Transform recipeEntryParent;
+    [SerializeField] Transform leftPageEntryParent;
+    [SerializeField] Transform rightPageEntryParent;
+    [SerializeField] int recipesPerPage = 3;
     [SerializeField] GameObject recipeEntryPrefab;
 
     [Header("Open/Close")]
@@ -57,15 +59,53 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
 
     public void RefreshBook()
     {
-        foreach (Transform child in recipeEntryParent)
-            Destroy(child.gameObject);
+        ClearPage(leftPageEntryParent);
+        ClearPage(rightPageEntryParent);
 
-        foreach (PotionData potion in allRecipes.allRecipes)
+        int totalVisibleRecipes = recipesPerPage * 2;
+        int recipeCount = Mathf.Min(
+            allRecipes.allRecipes.Count,
+            totalVisibleRecipes
+        );
+
+        for (int i = 0; i < recipeCount; i++)
         {
-            GameObject entryObject = Instantiate(recipeEntryPrefab, recipeEntryParent);
-            RecipeBookEntry entry = entryObject.GetComponent<RecipeBookEntry>();
-            entry.Setup(potion);
+            PotionData potion = allRecipes.allRecipes[i];
+
+            Transform targetPage;
+            int localIndex;
+
+            if (i < recipesPerPage)
+            {
+                targetPage = leftPageEntryParent;
+                localIndex = i;
+            }
+            else
+            {
+                targetPage = rightPageEntryParent;
+                localIndex = i - recipesPerPage;
+            }
+
+            GameObject entryObject = Instantiate(
+                recipeEntryPrefab,
+                targetPage
+            );
+
+            RecipeBookEntry entry =
+                entryObject.GetComponent<RecipeBookEntry>();
+
+            if (entry != null)
+                entry.Setup(potion);
         }
+    }
+
+    private void ClearPage(Transform pageParent)
+    {
+        if (pageParent == null)
+            return;
+
+        foreach (Transform child in pageParent)
+            Destroy(child.gameObject);
     }
 
     public void Interact(HandLogic hand)
@@ -152,5 +192,13 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
 
         isMoving = false;
         moveRoutine = null;
+    }
+
+    public string GetPrompt(HandLogic hand)
+    {
+        if (hand == null || !hand.isHolding)
+            return "Lookup Recipes";
+
+        return "";
     }
 }

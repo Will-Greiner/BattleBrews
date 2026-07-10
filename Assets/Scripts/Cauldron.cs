@@ -211,7 +211,15 @@ public class Cauldron : MonoBehaviour, IHandInteractable
         if (ingredient != null)
         {
             AddIngredient(ingredient.ingredient);
-            Destroy(other.gameObject);
+            Destroy(ingredient.gameObject);
         }
+    }
+
+    public string GetPrompt(HandLogic hand)
+    {
+        if (hand == null || hand.isHolding)
+            return "Drop Ingredient";
+
+        return "";
     }
 }

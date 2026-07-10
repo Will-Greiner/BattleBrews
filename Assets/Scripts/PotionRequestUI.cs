@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using TMPro;
 
 public class PotionRequestUI : MonoBehaviour
@@ -10,6 +11,7 @@ public class PotionRequestUI : MonoBehaviour
     [SerializeField] TMP_Text requestText;
     [SerializeField] TMP_Text potionNameText;
     [SerializeField] Image potionIcon;
+    public Animator animator;
 
     private void Awake()
     {
@@ -20,6 +22,8 @@ public class PotionRequestUI : MonoBehaviour
     {
         requestPanel.SetActive(true);
 
+        animator.SetTrigger("ShowUI");
+
         requestText.text = $"{bossName}";
         potionNameText.text = potionName;
         potionIcon.sprite = icon;
@@ -28,6 +32,13 @@ public class PotionRequestUI : MonoBehaviour
 
     public void HidePotionRequest()
     {
+        StartCoroutine(HideRoutine());
+    }
+
+    private IEnumerator HideRoutine()
+    {
+        yield return new WaitForSeconds(0.417f);
+
         requestPanel.SetActive(false);
     }
 }

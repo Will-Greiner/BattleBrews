@@ -24,6 +24,7 @@ public class RoundReportUI : MonoBehaviour
         continueButton.onClick.AddListener(() =>
         {
             Hide();
+            HandLogic.Instance.EnableInput();
             OutcomeManager.Instance.ContinueAfterReport();
         });
     }
@@ -36,6 +37,8 @@ public class RoundReportUI : MonoBehaviour
         bossText.text = "Opponent: " + bossName;
         requestedPotionText.text = "Requested Potion: " + requestedPotion;
         givenPotionText.text = "Given Potion: " + givenPotion;
+
+        HandLogic.Instance.DisableInput();
     }
 
     public void ShowTimeoutReport(string bossName, string requestedPotion)

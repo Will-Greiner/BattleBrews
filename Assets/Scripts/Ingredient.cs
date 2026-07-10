@@ -12,6 +12,14 @@ public class Ingredient : MonoBehaviour, IHandInteractable
 
         hand.PickUpExisitingObject(gameObject);
     }
+
+    public string GetPrompt(HandLogic hand)
+    {
+        if (hand == null || !hand.isHolding)
+            return ingredient.name;
+
+        return "";
+    }
 }
 
 [System.Serializable]

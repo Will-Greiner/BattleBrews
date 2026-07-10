@@ -361,4 +361,18 @@ transform.localRotation = Quaternion.Euler(euler);
         currentDeliveryZone = null;
         currentItemReceiver = null;
     }
+
+    public void EnableInput()
+    {
+        inputLocked = false;
+
+        Cursor.visible = false;
+    }
+
+    public void DisableInput()
+    {
+        inputLocked = true;
+
+        Cursor.visible = true;
+    }
 }

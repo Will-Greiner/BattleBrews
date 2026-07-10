@@ -11,4 +11,12 @@ public class Potion : MonoBehaviour, IHandInteractable
 
         hand.PickUpExisitingObject(gameObject);
     }
+
+    public string GetPrompt(HandLogic hand)
+    {
+        if (hand == null || !hand.isHolding)
+            return potionData.potionName;
+
+        return "";
+    }
 }

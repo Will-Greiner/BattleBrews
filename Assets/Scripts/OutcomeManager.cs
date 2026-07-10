@@ -15,7 +15,6 @@ public class OutcomeManager : MonoBehaviour
     [Header("Game")]
     [SerializeField] BossScenario[] allScenarios;
     [SerializeField] int startingLives = 3;
-    [SerializeField] float roundResultDelay = 2f;
 
     [Header("UI")]
     [SerializeField] TMP_Text roundText;
@@ -89,6 +88,11 @@ public class OutcomeManager : MonoBehaviour
 
     private void StartRound()
     {
+        StartCoroutine(StartRoundRoutine());
+    }
+
+    private IEnumerator StartRoundRoutine()
+    {
         state = GameState.RoundStarting;
 
         UpdateUI();
@@ -97,6 +101,9 @@ public class OutcomeManager : MonoBehaviour
         SelectRequestedPotion();
 
         CharacterManager.Instance.GenerateCharacter();
+
+        if (CharacterManager.Instance.CurrentFighter != null)
+            yield return CharacterManager.Instance.CurrentFighter.WalkIn();
 
         PotionRequestUI.Instance.ShowPotionRequest(currentScenario.bossName, requestedPotion.potionName, requestedPotion.icon);
     
@@ -119,6 +126,11 @@ public class OutcomeManager : MonoBehaviour
         if (state != GameState.RoundActive)
             return;
 
+        StartCoroutine(TimeExpiredRoutine());
+    }
+
+    private IEnumerator TimeExpiredRoutine()
+    {
         state = GameState.RoundResolving;
 
         TimeManager.Instance.PauseTimer();
@@ -127,7 +139,16 @@ public class OutcomeManager : MonoBehaviour
 
         UpdateUI();
 
-        RoundReportUI.Instance.ShowTimeoutReport(currentScenario.bossName, requestedPotion.potionName);
+        PotionRequestUI.Instance.animator.SetTrigger("HideUI");
+        PotionRequestUI.Instance.HidePotionRequest();
+
+        if (CharacterManager.Instance.CurrentFighter != null)
+            yield return CharacterManager.Instance.CurrentFighter.WalkOut();
+
+        RoundReportUI.Instance.ShowTimeoutReport(
+            currentScenario.bossName,
+            requestedPotion.potionName
+        );
     }
 
     private void ResolveRound(Outcome outcome, PotionData givenPotion = null)
@@ -135,6 +156,11 @@ public class OutcomeManager : MonoBehaviour
         if (state != GameState.RoundActive)
             return;
 
+        StartCoroutine(ResolveRoundRoutine(outcome, givenPotion));
+    }
+
+    private IEnumerator ResolveRoundRoutine(Outcome outcome, PotionData potion)
+    {
         state = GameState.RoundResolving;
 
         TimeManager.Instance.PauseTimer();
@@ -144,7 +170,13 @@ public class OutcomeManager : MonoBehaviour
 
         UpdateUI();
 
-        string givenPotionName = givenPotion != null ? givenPotion.potionName : "None";
+        PotionRequestUI.Instance.animator.SetTrigger("HideUI");
+        PotionRequestUI.Instance.HidePotionRequest();
+
+        if (CharacterManager.Instance.CurrentFighter != null)
+            yield return CharacterManager.Instance.CurrentFighter.WalkOut();
+
+        string givenPotionName = potion != null ? potion.potionName : "None";
 
         RoundReportUI.Instance.ShowReport(outcome, currentScenario.bossName, requestedPotion.potionName, givenPotionName);
     }
