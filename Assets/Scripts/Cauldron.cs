@@ -27,6 +27,8 @@ public class Cauldron : MonoBehaviour, IHandInteractable
     [SerializeField] Transform potionSpawn;
     [SerializeField] GameObject splashPrefab;
     [SerializeField] Transform waterLocation;
+    [SerializeField] GameObject goodPotionSpawn;
+    [SerializeField] GameObject badPotionSpawn;
 
     [Header("Cauldron Limits")]
     [SerializeField] int maxIngredientTypes = 3;
@@ -138,6 +140,8 @@ public class Cauldron : MonoBehaviour, IHandInteractable
         potion.isDiscovered = true;
         RecipeBook.Instance.RefreshBook();
 
+        GameObject effect = Instantiate(goodPotionSpawn, potionSpawn.position, Quaternion.identity);
+        Destroy(effect, 1.5f);
         GameObject spawnedPotion = Instantiate(
             potion.prefab,
             potionSpawn.position,
