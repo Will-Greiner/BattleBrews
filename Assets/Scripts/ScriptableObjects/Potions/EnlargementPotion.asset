@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: EnlargementPotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f411670306759984c9f7bec28370c5c3, type: 3}
   potionName: Enlargement Potion
   prefab: {fileID: 3526320236207850986, guid: 89ebe1a4d9bba2840ac76c00c6c2f2c2, type: 3}
   requiredIngredients:

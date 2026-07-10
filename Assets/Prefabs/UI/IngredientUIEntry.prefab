@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientBookUI
   ingredientIcon: {fileID: 4826820775219437046}
   quantity: {fileID: 92954204231322361}
-  unknownIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  unknownIcon: {fileID: 21300000, guid: 6fecb9e9e339d7a4c9b72ffef07f8ef1, type: 3}
 --- !u!1 &8784506985926210977
 GameObject:
   m_ObjectHideFlags: 0
