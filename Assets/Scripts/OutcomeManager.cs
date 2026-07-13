@@ -258,6 +258,8 @@ public class OutcomeManager : MonoBehaviour
     {
         state = GameState.GameOver;
 
+        HandLogic.Instance.DisableInput();
+
         TimeManager.Instance.StopTimer();
         TimeManager.Instance.HideClock();
 

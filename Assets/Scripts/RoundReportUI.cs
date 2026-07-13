@@ -73,6 +73,8 @@ public class RoundReportUI : MonoBehaviour
         bossText.text = bossName;
         requestedPotionText.text = requestedPotion;
         givenPotionText.text = "None";
+
+        HandLogic.Instance.DisableInput();
     }
 
     public void Hide()

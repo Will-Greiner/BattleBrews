@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1a32a5e1a5bfd40b2b334a79ae1efc, type: 3}
+  m_Name: Cyclops
+  m_EditorClassIdentifier: Assembly-CSharp::BossScenario
+  bossName: a Cyclops
+  bestOutcomePotions:
+  - {fileID: 11400000, guid: 9fe33190fa02a1946a28cd2204ce468b, type: 2}
+  worstOutcomePotions:
+  - {fileID: 11400000, guid: 3c761cdb20785b046878b5257d454d4e, type: 2}
+  - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
+  beginningRound: 0
+  endRound: 0
+  goodBossResult: David and Goliath don't exist here, but if they did...
+  badBossResult: That's never coming out of the flooring
