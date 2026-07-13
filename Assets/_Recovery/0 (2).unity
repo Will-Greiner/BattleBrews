@@ -21054,8 +21054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3255a2a8238327943bdcdd8eda86b48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  startingTimeInSeconds: 360
-  secondsLostPerRound: 45
+  startingTimeInSeconds: 120
+  secondsLostPerRound: 30
   timerText: {fileID: 1338371944}
   clockUI: {fileID: 1355883053}
 --- !u!114 &788782610
