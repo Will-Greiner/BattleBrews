@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: Dr. Pepper
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
+  saveID: pepper
   icon: {fileID: 21300000, guid: 12669e01ba78bfc49b00aac2a9319b05, type: 3}
   potionName: Dr. Pepper
   prefab: {fileID: 3526320236207850986, guid: 65ae072b692b27645a3ccd1858fb47d1, type: 3}
@@ -22,4 +23,4 @@ MonoBehaviour:
     quantity: 5
   - ingredient: {fileID: 11400000, guid: 8b5f6709adab59b448ad27157b1fd1cf, type: 2}
     quantity: 2
-  isDiscovered: 1
+  isDiscovered: 0

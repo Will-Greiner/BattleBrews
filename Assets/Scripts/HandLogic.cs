@@ -35,6 +35,7 @@ public class HandLogic : MonoBehaviour
     [SerializeField] private LayerMask layerToIgnore;
     private PotionDelivery currentDeliveryZone;
     private I_ItemReceiver currentItemReceiver;
+    public AudioSource audioSource;
 
     [SerializeField] private string heldItemLayerName = "HeldItem";
 

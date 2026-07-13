@@ -8,4 +8,6 @@ public class BossScenario : ScriptableObject
     public PotionData[] worstOutcomePotions;
     public int beginningRound;
     public int endRound;
+    public string goodBossResult;
+    public string badBossResult;
 }

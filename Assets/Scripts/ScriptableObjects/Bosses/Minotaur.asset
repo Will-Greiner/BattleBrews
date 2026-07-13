@@ -17,5 +17,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fcc8d7b97d5b7a9489769d218841a7ad, type: 2}
   worstOutcomePotions:
   - {fileID: 11400000, guid: 9274e9aa28b7aac4aa66b0c5abdf1ab1, type: 2}
+  - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
   beginningRound: 0
   endRound: 0
+  goodBossResult: They slayed
+  badBossResult: They got so daed

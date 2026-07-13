@@ -12,6 +12,8 @@ public class PotionRequestUI : MonoBehaviour
     [SerializeField] TMP_Text potionNameText;
     [SerializeField] Image potionIcon;
     public Animator animator;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip clip;
 
     private void Awake()
     {
@@ -28,6 +30,8 @@ public class PotionRequestUI : MonoBehaviour
         potionNameText.text = potionName;
         potionIcon.sprite = icon;
         potionIcon.enabled = icon != null;
+
+        source.PlayOneShot(clip);
     }
 
     public void HidePotionRequest()

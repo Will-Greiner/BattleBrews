@@ -21,4 +21,5 @@ public class FighterAnimationController : MonoBehaviour
         yield return new WaitForSeconds(walkOutDuration);
         body.SetActive(false);
     }
+
 }

@@ -10,4 +10,5 @@ public class IngredientData : ScriptableObject
     public GameObject cookedPrefab;
     public GameObject crushedPrefab;
     public GameObject displayPrefab;
+    public AudioClip sound;
 }

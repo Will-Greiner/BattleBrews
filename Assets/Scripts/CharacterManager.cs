@@ -10,6 +10,11 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] GameObject[] facialHairObjects;
     [SerializeField] GameObject[] armorObjects;
     [SerializeField] GameObject[] backObjects;
+    [SerializeField] Texture2D[] eyeImages;
+    [SerializeField] Texture2D[] pupilImages;
+    [SerializeField] Texture2D[] mouthImages;
+    [SerializeField] Material eyeMaterial;
+    [SerializeField] Material mouthMaterial;
 
     [SerializeField] Transform[] spawnTransforms;
     private List<GameObject> spawnedObjects = new List<GameObject>();
@@ -44,6 +49,14 @@ public class CharacterManager : MonoBehaviour
                     CurrentFighter = spawned.GetComponentInParent<FighterAnimationController>();
             }
         }
+
+        int randomEyeIndex = Random.Range(0, eyeImages.Length);
+        int randomPupilIndex = Random.Range(0, pupilImages.Length);
+        int randomMouthIndex = Random.Range(0, mouthImages.Length);
+
+        eyeMaterial.SetTexture("_Eye", eyeImages[randomEyeIndex]);
+        eyeMaterial.SetTexture("_Pupil", pupilImages[randomPupilIndex]);
+        mouthMaterial.SetTexture("_BaseMap", mouthImages[randomMouthIndex]);
     }
 
     public void ClearCharacter()
@@ -58,6 +71,10 @@ public class CharacterManager : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+
+        eyeMaterial.SetTexture("_Eye", eyeImages[0]);
+        eyeMaterial.SetTexture("_Pupil", pupilImages[0]);
+        mouthMaterial.SetTexture("_BaseMap", mouthImages[0]);
     }
 
 }

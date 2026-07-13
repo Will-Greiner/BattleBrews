@@ -18,3 +18,4 @@ MonoBehaviour:
   cookedPrefab: {fileID: 8523907007946626545, guid: c03cfff35f2dde6468878a3586aa36b6, type: 3}
   crushedPrefab: {fileID: 0}
   displayPrefab: {fileID: 4194811760935856696, guid: a143d2ae6c0b7424995ed281d9b8ea9e, type: 3}
+  sound: {fileID: 8300000, guid: 713528ca2f3371944a129b0772193112, type: 3}

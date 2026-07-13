@@ -19,7 +19,8 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
     [SerializeField] Transform closedTransform;
     [SerializeField] float moveDuration = 0.75f;
     [SerializeField] Animator animator;
-    [SerializeField] GameObject bookUI;
+    [SerializeField] GameObject promptUI;
+    [SerializeField] ObjectHighlight highlight;
 
     private bool isOpen;
     private bool isMoving;
@@ -44,9 +45,12 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
         if (viewCamera == null)
             viewCamera = Camera.main;
 
+        
+        foreach (PotionData potion in allRecipes.allRecipes)
+            SaveManager.LoadPotion(potion);
+
         RefreshBook();
 
-        bookUI.SetActive(false);
 
         bookTransform.SetPositionAndRotation(
             closedTransform.position,
@@ -143,7 +147,6 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
 
         isOpen = false;
         Cursor.visible = false;
-        bookUI.SetActive(false);
 
         if (HandLogic.Instance != null)
             HandLogic.Instance.inputLocked = false;
@@ -188,8 +191,6 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
 
         bookTransform.SetPositionAndRotation(targetPosition, targetRotation);
 
-        bookUI.SetActive(isOpen);
-
         isMoving = false;
         moveRoutine = null;
     }
@@ -200,5 +201,39 @@ public class RecipeBook : MonoBehaviour, IHandInteractable
             return "Lookup Recipes";
 
         return "";
+    }
+
+    [ContextMenu("Reset Potion Discoveries")]
+    private void ResetDiscoveries()
+    {
+        foreach (PotionData potion in allRecipes.allRecipes)
+            SaveManager.ResetPotion(potion);
+
+        RefreshBook();
+    }
+
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponentInParent<HandLogic>() != null)
+        {
+            if (promptUI)
+                promptUI.SetActive(true);
+
+            if (highlight)
+                highlight.ShowHighlight();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponentInParent<HandLogic>() != null)
+        {
+            if (promptUI)
+                promptUI.SetActive(false);
+
+            if (highlight)
+                highlight.HideHighlight();
+        }
     }
 }

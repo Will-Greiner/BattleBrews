@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: CharismaPotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
+  saveID: charisma
   icon: {fileID: 21300000, guid: 9072d19292a29da4ea111cb9df57ec36, type: 3}
   potionName: Charisma Potion
   prefab: {fileID: 3526320236207850986, guid: 38947c502ddf5b54c8b11af20c4936b6, type: 3}
@@ -20,4 +21,4 @@ MonoBehaviour:
     quantity: 4
   - ingredient: {fileID: 11400000, guid: 128c2e35ce1c1b146a1164af2e34d18f, type: 2}
     quantity: 6
-  isDiscovered: 1
+  isDiscovered: 0

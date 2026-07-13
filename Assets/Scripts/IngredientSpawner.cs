@@ -12,6 +12,8 @@ public class IngredientSpawner : MonoBehaviour, IHandInteractable
             return;
 
         hand.HoldObject(ingredientToSpawn.prefab);
+
+        hand.audioSource.PlayOneShot(ingredientToSpawn.sound);
     }
 
     public string GetPrompt(HandLogic hand)

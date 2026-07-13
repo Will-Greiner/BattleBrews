@@ -20,6 +20,18 @@ public class OutcomeManager : MonoBehaviour
     [SerializeField] TMP_Text roundText;
     [SerializeField] GameObject gameOverScreen;
 
+    [Header("Outcome Particles")]
+    [SerializeField] private ParticleSystem bestOutcomeParticles;
+    [SerializeField] private ParticleSystem worstOutcomeParticles;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip bestClip;
+    [SerializeField] private AudioClip worstClip;
+
+    [Header("Round Timing")]
+    [SerializeField] private float reportCardDelay = 2f;
+    [SerializeField] GameObject thanksWindow;
+
     private readonly List<BossScenario> possibleScenarios = new();
 
     private BossScenario currentScenario;
@@ -50,6 +62,9 @@ public class OutcomeManager : MonoBehaviour
 
     private void Start()
     {
+        if (thanksWindow != null)
+            thanksWindow.SetActive(false);
+
         ShowMainMenu();
     }
 
@@ -57,10 +72,14 @@ public class OutcomeManager : MonoBehaviour
     {
         state = GameState.MainMenu;
 
+        StopAllOutcomeParticles();
+
         currentRound = 0;
         lives = startingLives;
         currentScenario = null;
         requestedPotion = null;
+
+        thanksWindow.SetActive(false);
 
         TimeManager.Instance.HideClock();
         CharacterManager.Instance.ClearCharacter();
@@ -78,6 +97,8 @@ public class OutcomeManager : MonoBehaviour
         currentRound = 1;
         lives = startingLives;
 
+        thanksWindow.SetActive(false);
+
         if (gameOverScreen != null)
             gameOverScreen.SetActive(false);
 
@@ -94,6 +115,8 @@ public class OutcomeManager : MonoBehaviour
     private IEnumerator StartRoundRoutine()
     {
         state = GameState.RoundStarting;
+
+        StopAllOutcomeParticles();
 
         UpdateUI();
 
@@ -176,9 +199,59 @@ public class OutcomeManager : MonoBehaviour
         if (CharacterManager.Instance.CurrentFighter != null)
             yield return CharacterManager.Instance.CurrentFighter.WalkOut();
 
-        string givenPotionName = potion != null ? potion.potionName : "None";
+        // Character is now offscreen
+        PlayOutcomeEffects(outcome);
 
-        RoundReportUI.Instance.ShowReport(outcome, currentScenario.bossName, requestedPotion.potionName, givenPotionName);
+        // Let the player see/hear the effect
+        yield return new WaitForSeconds(reportCardDelay);
+
+
+        RoundReportUI.Instance.ShowReport(
+            outcome,
+            currentScenario,
+            requestedPotion,
+            potion,
+            lives
+        );
+    }
+
+    private void StopAllOutcomeParticles()
+    {
+        StopParticleSystem(bestOutcomeParticles);
+        StopParticleSystem(worstOutcomeParticles);
+    }
+
+    private void StopParticleSystem(ParticleSystem particleSystem)
+    {
+        if (particleSystem == null)
+            return;
+
+        particleSystem.Stop(
+            true,
+            ParticleSystemStopBehavior.StopEmittingAndClear
+        );
+    }
+
+    private void PlayOutcomeEffects(Outcome outcome)
+{
+        switch (outcome)
+        {
+            case Outcome.Best:
+                if (bestOutcomeParticles != null)
+                    bestOutcomeParticles.Play();
+
+                if (bestClip != null)
+                    audioSource.PlayOneShot(bestClip);
+                break;
+
+            case Outcome.Worst:
+                if (worstOutcomeParticles != null)
+                    worstOutcomeParticles.Play();
+
+                if (worstClip != null)
+                    audioSource.PlayOneShot(worstClip);
+                break;
+        }
     }
 
     private void EndGame()
@@ -277,7 +350,47 @@ public class OutcomeManager : MonoBehaviour
             return;
         }
 
+        if (currentRound == 3)
+        {
+            ShowThanksWindow();
+            return;
+        }
+
         currentRound++;
         StartRound();
     }
+
+    private void ShowThanksWindow()
+    {
+        if (thanksWindow == null)
+        {
+            Debug.LogWarning(
+                "Round three window is not assigned. Continuing normally."
+            );
+
+            currentRound++;
+            StartRound();
+            return;
+        }
+
+        state = GameState.RoundResolving;
+
+        TimeManager.Instance.PauseTimer();
+        HandLogic.Instance.DisableInput();
+
+        thanksWindow.SetActive(true);
+    }
+
+    public void ContinueAfterThanksWindow()
+    {
+        if (thanksWindow != null)
+            thanksWindow.SetActive(false);
+
+        currentRound++;
+
+        HandLogic.Instance.EnableInput();
+
+        StartRound();
+    }
+
 }

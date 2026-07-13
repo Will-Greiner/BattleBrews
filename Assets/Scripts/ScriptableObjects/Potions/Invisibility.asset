@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: Invisibility
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
+  saveID: invisible
   icon: {fileID: 21300000, guid: f5fd87f9e94bf4742bdd923259899a1c, type: 3}
   potionName: Invisibility Potion
   prefab: {fileID: 3526320236207850986, guid: 6c9862bed0cc6914681b7c9bd29ca896, type: 3}
@@ -22,4 +23,4 @@ MonoBehaviour:
     quantity: 3
   - ingredient: {fileID: 11400000, guid: 64cb40fd41e4b124fa48826b0ac793b7, type: 2}
     quantity: 2
-  isDiscovered: 1
+  isDiscovered: 0

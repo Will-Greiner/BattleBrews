@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: GrossPotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
+  saveID: gross
   icon: {fileID: 21300000, guid: eabb1f59befe1f84b8c0231820ca42d4, type: 3}
   potionName: Gross Potion
   prefab: {fileID: 3526320236207850986, guid: c819345dae3f0b747ad1d0c392a7a5ae, type: 3}
@@ -23,3 +24,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 28a0be8cfd2577f4194489dcd1d8b8fb, type: 2}
     quantity: 1
   isDiscovered: 1
+  goodResult: Gross
+  badResult: I can't believe you thought that was going to work...

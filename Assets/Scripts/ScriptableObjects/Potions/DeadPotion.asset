@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: DeadPotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
+  saveID: dead
   icon: {fileID: 21300000, guid: b3acc411e93a4c74596afac09c4cab4a, type: 3}
   potionName: Dead Potion
   prefab: {fileID: 3526320236207850986, guid: d103c2f3b2854c944b7646a6d7e7d3ed, type: 3}

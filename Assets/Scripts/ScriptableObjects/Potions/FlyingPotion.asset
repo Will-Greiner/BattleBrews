@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f7b0d563c55ca4994f5ec7b42dbaaa, type: 3}
   m_Name: FlyingPotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
+  saveID: flying
   icon: {fileID: 21300000, guid: 0070ee1a7a0d2b3478edcc6c3f8f12fd, type: 3}
   potionName: Flying Potion
   prefab: {fileID: 3526320236207850986, guid: 334edfc52ee79c6448d3a86e36fbdde0, type: 3}
@@ -22,4 +23,4 @@ MonoBehaviour:
     quantity: 1
   - ingredient: {fileID: 11400000, guid: 8fb7ea03023bb814fa2b9ba873cb2ebf, type: 2}
     quantity: 3
-  isDiscovered: 1
+  isDiscovered: 0
