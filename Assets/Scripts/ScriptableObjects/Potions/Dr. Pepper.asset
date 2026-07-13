@@ -24,3 +24,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 8b5f6709adab59b448ad27157b1fd1cf, type: 2}
     quantity: 2
   isDiscovered: 0
+  goodResult: 27 herbs and spices!
+  badResult: Tastes like Pepsi, gross

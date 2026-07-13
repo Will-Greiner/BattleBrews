@@ -24,3 +24,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 823e17d4d9f99f44b8556327ce11ee45, type: 2}
     quantity: 4
   isDiscovered: 0
+  goodResult: So cute ~!! ^-^
+  badResult: Ur ugly

@@ -22,3 +22,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 28a0be8cfd2577f4194489dcd1d8b8fb, type: 2}
     quantity: 5
   isDiscovered: 0
+  goodResult: It's getting hot in here
+  badResult: Hot breath, nasty!

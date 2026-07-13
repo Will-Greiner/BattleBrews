@@ -20,5 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
   beginningRound: 0
   endRound: 0
-  goodBossResult: They slayed
-  badBossResult: They got so daed
+  goodBossResult: 'They fed the dragon a treat and won its affections, man''s best
+    friend. '
+  badBossResult: 'They got totally barbecued like Korean style. '

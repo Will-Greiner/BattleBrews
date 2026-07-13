@@ -22,3 +22,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 28a0be8cfd2577f4194489dcd1d8b8fb, type: 2}
     quantity: 1
   isDiscovered: 0
+  goodResult: You are the wind beneath their wings
+  badResult: What a gentle breeze

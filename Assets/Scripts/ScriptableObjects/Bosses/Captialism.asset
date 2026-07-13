@@ -20,5 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
   beginningRound: 0
   endRound: 0
-  goodBossResult: They slayed
-  badBossResult: They got so daed
+  goodBossResult: 'They destroyed every Dollar General within a 10-mile radius. '
+  badBossResult: 'Their small Etsy business couldn''t compete with Amazon shipping
+    prices. '

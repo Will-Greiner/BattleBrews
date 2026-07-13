@@ -20,5 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8aabdb99df525424388fd1fe6f5440b6, type: 2}
   beginningRound: 0
   endRound: 0
-  goodBossResult: They slayed
-  badBossResult: They got so daed
+  goodBossResult: They grabbed the Surtur by his horns and rocked his world.
+  badBossResult: They got burned more than an innocent woman in colonial Massachusetts
+    between February 1692 and May 1693.

@@ -22,3 +22,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 128c2e35ce1c1b146a1164af2e34d18f, type: 2}
     quantity: 6
   isDiscovered: 0
+  goodResult: How suave
+  badResult: You're scaring me

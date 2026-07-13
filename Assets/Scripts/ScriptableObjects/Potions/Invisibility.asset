@@ -24,3 +24,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 64cb40fd41e4b124fa48826b0ac793b7, type: 2}
     quantity: 2
   isDiscovered: 0
+  goodResult: Like a vampire in a mirror!
+  badResult: Now they are naked for no reason

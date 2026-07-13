@@ -24,3 +24,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: a14265ee83c41fa4bad2441df9d20125, type: 2}
     quantity: 2
   isDiscovered: 0
+  goodResult: Gained a third eye
+  badResult: Went blind

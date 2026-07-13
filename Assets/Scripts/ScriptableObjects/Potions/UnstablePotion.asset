@@ -18,3 +18,5 @@ MonoBehaviour:
   prefab: {fileID: 3526320236207850986, guid: 4e47b439f0e56cf4ab3a3fe1b5b54c5d, type: 3}
   requiredIngredients: []
   isDiscovered: 0
+  goodResult: I mean... it works?
+  badResult: Can you read?

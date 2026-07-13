@@ -20,3 +20,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 50cb1a458d67d204692589d44737f29b, type: 2}
     quantity: 8
   isDiscovered: 1
+  goodResult: Better than Viagra
+  badResult: How did you make them shrink

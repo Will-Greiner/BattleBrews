@@ -20,3 +20,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 06ddba0726e223d4394a4eabda450be1, type: 2}
     quantity: 20
   isDiscovered: 0
+  goodResult: I wondered what those floating gold rings were for
+  badResult: Fell over on the first hurdle

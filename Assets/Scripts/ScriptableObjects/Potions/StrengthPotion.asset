@@ -24,3 +24,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 8fb7ea03023bb814fa2b9ba873cb2ebf, type: 2}
     quantity: 2
   isDiscovered: 0
+  goodResult: Honey you mean HUNKules
+  badResult: They are clearly juicing
